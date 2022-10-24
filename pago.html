@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasarela de pago</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="cargarPago()" id="p_body">
+    <header id="t_header">
+        <h4 id="t_nombre">Pago con tarjeta</h4>
+        <h4><a href="ticket.html">Volver a ticket</a></h4>
+        <h4><a href="index.html">Salir</a></h4>
+    </header>
+    <div id="p_contenedor">
+        <h1>RedBros</h1>
+        <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2019/10/06/15703723600521.jpg" alt="" srcset="" height="80px" width="160px">
+        <h2>Total a pagar</h2>
+        <p id="p_total"></p>
+        <h4>*Introduzca los datos tal cual aparecen en su tarjeta.</h4>
+        <div id="p_tpv">
+        <p>Introduzca el número de tarjeta:</p>
+        <input type="text" name="" id="num_tarjeta" required>
+        <p>Introduzca el nombre del titular:</p>
+        <input type="text" id="nombre_tarjeta" required>
+        <p>Caducidad</p>
+        <div id="p_caducidad">
+        <input type="number" placeholder="Mes" id="mes_tarjeta" required>
+        <input type="number" placeholder="Año" id="ano_tarjeta" required>
+        </div>
+        <p>CVV</p>
+        <input type="number" name="cvv" id="cvv" required>
+    </div>
+        <button onclick="checkPago()">Pagar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

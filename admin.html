@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Area</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body id="a_body" onload="cargarGraficos();">
+
+    <header id="a_header">
+        <h2 id="a_nombre">Admin Área</h2>
+        <h4><a href="index.html">Salir</a></h4>
+    </header>
+    <div id="a_gestion">
+        <h2>Gestión de camareros</h2>
+        <div id="a_tabla">
+            <div class="a_tablaH">
+                <p></p>
+                <p>Nombre</p>
+                <p>Password</p>
+                <p>Mesas</p>
+            </div>
+            <div class="a_tablaR">
+                <p class="a_ids">ID 1: </p>
+                <input type="text" class="userName" placeholder="">
+                <input type="text" class="userPass" placeholder="">
+                <p class="a_rendimiento"> </p>
+            </div>
+            <div class="a_tablaR">
+                <p class="a_ids">ID 2: </p>
+                <input type="text" class="userName" placeholder="">
+                <input type="text" class="userPass" placeholder="">
+                <p class="a_rendimiento"> </p>
+            </div>
+            <div class="a_tablaR">
+                <p class="a_ids">ID 3: </p>
+                <input type="text" class="userName" placeholder="">
+                <input type="text" class="userPass" placeholder="">
+                <p class="a_rendimiento"> </p>
+            </div>
+            <div class="a_tablaR">
+                <p class="a_ids">ID 4: </p>
+                <input type="text" class="userName" placeholder="">
+                <input type="text" class="userPass" placeholder="">
+                <p class="a_rendimiento"> </p>
+            </div>
+        </div>
+        <button onclick="mostrarDatos()">Mostrar datos</button>      
+        <button onclick="guardarCambios()">Guardar cambios</button>
+    </div>
+    <div class="a_resultados1">
+    <details>
+        <summary class= "c_style">
+            Resultados
+        </summary>
+        <button onclick="cargarGraficos(0)" class="a_resultados1">Total/mesas</button>
+        <button onclick="cargarGraficos(1)" class="a_resultados1">Total/importes</button>  
+    
+    </details>
+</div>
+    
+    <div id="a_resultados">
+                
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
