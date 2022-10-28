@@ -1,0 +1,605 @@
+/*
+font-family: 'Nunito Sans', sans-serif;
+font-family: 'Josefin Slab', serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Dosis', sans-serif;
+
+/*https://coolors.co/071e22-1d7874-679289-f4c095-ee2e31
+
+negro:#071E22
+Verde oscuro: #1D7874
+Verde Claro: #679289
+naranja: #F4C095
+rojo: #EE2E31
+azul hilo: #9BD9D9
+*/
+/* -------------------------GENERAL-------------------- */
+
+* {
+    box-sizing: border-box;
+    /*border: red 1px solid;*/
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    font-size: 6vw;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+    background-color: white;
+    font-family: 'Josefin Slab', serif;
+    letter-spacing: 2px;
+}
+
+.flex-wrapper {
+    display: flex;
+    min-height: 83vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 2px 10px 5px;
+    background-color: black;
+}
+
+header:hover {
+    background-color: rgb(29, 120, 116, 0.2);
+}
+
+header h1 {
+    display: inline;
+    font-size: 7vw;
+    margin: 0 13% 0 8%;
+    color: White;
+}
+
+footer h3 {
+    display: inline;
+    font-size: 0.8em;
+    margin-left: 40%;
+    color: white;
+}
+
+footer h4 {
+    display: inline;
+    font-size: 0.9em;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+p {
+    font-size: 5vw;
+    color: black;
+    font-weight: 600;
+    margin: 15px;
+}
+
+h2 {
+    font-size: 12vw;
+    color: #9BD9D9;
+    margin: 35px;
+}
+
+h3 {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+span#header {
+    font-size: 1em;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #9BD9D9;
+    font-weight: 800;
+
+}
+
+.c_cpntainer1,
+.c_cpntainer2,
+.c_cpntainer3 {
+    margin: 0 5% 30px 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* -------------------------INDEX-------------------- */
+
+button {
+    border: none;
+    background-color: black;
+    width: 30%;
+    padding: 1%;
+    margin: 25px;
+    font-size: 5vw;
+    color: white;
+    padding: 15px;
+    font-family: 'Josefin Slab', serif;
+}
+
+input {
+    font-family: 'Josefin Slab', serif;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: solid 2px black;
+    font-size: 7vw;
+    height: 25px;
+    background-color: white;
+    width: 20%;
+    text-align: center;
+}
+
+input:focus {
+    border-top: white;
+    border-right: white;
+    border-left: white;
+    border-bottom: solid 1px black;
+    background-color: white;
+    padding: 5px;
+
+}
+
+#i_login input {
+
+    border-bottom: solid 2px black;
+    font-size: 5vw;
+    height: 25px;
+    width: 35%;
+    font-size: 6vw;
+    background-color: #9BD9D9;
+}
+
+#i_login input:focus {
+    border-bottom: solid 1px black;
+    background-color: white;
+    padding: 5px;
+
+}
+
+#login {
+    width: 100%;
+    margin:0 0 0 0;
+    padding: 0;
+}
+
+#login button:hover {
+    background-color: #d8f9f9;
+    color: black;
+}
+
+
+span#title {
+    border-bottom: 6px solid #ffb700;
+}
+
+
+#i_login {
+    margin: 0 auto 0 auto;
+    padding-top: 25px;
+    padding-bottom: 30px;;
+    background-color: #9BD9D9;
+    width: 100%;
+    height: 100%;
+    border-radius: 1px;
+}
+
+/*-----CAMARERO-------*/
+footer {
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 20px 2px 15px 5px;
+}
+
+.wrapper {
+    z-index: 1;
+    width: 100%;
+    margin-top: 100px;
+}
+
+#scroll-content {
+    z-index: 1;
+}
+
+.c_mesasA {
+    width: 70px;
+    height: 70px;
+    background-color: #FBF2CF;
+    margin: 7px;
+    text-align: center;
+    color: #d0a600;
+    font-size: 7vw;
+    font-weight: 800;
+    border-radius: 3px;
+}
+
+.c_mesasA:hover {
+    background-color: #ffe478;
+}
+
+.c_mesasC {
+    width: 70px;
+    height: 70px;
+    background-color: #C6EBC5;
+    margin: 7px;
+    text-align: center;
+    font-size: 7vw;
+    color: #6c8549;
+    border-radius: 3px;
+}
+
+.c_mesasC:hover {
+    background-color: #93cf91;
+}
+
+.c_mesasR {
+    width: 70px;
+    height: 70px;
+    background-color: #ff9292;
+    margin: 7px;
+    text-align: center;
+    color: #792929;
+    font-size: 7vw;
+    border-radius: 3px;
+}
+
+.c_mesasR:hover {
+    background-color: #fe7171;
+    ;
+}
+
+#c_header {
+    background-color: rgb(0, 0, 0, 0.5);
+    color: white;
+    text-align: right;
+
+}
+
+#c_header h4 {
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.c_style {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.c_style1 {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: brown;
+    color: white;
+}
+
+.c_ticket {
+    width: 150px;
+    height: 50px;
+    background-color: rgb(201, 201, 201);
+    margin: 5px;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* ------------------------------- ADMIN AREA --------------------------------------- */
+
+
+
+
+header#a_header {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(0, 0, 0, 0.5);
+    color: white;
+    text-align: right;
+    font-size: 4vw
+}
+
+#a_gestion {
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 50px;
+}
+
+#a_gestion h2 {
+    margin: 5px 0px
+}
+
+#a_tabla {
+    padding: 0 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.a_tablaH {
+    height: 12vw;
+    font-size: 3.8vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-right: 4vw;
+    text-align: start;
+}
+
+.a_tablaR {
+    height: 12vw;
+    font-size: 3.8vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.a_ids {
+    font-size: 3vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+p.a_rendimiento {
+    margin-left: 1vw;
+    font-size: 3.8vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.a_rendimiento {
+    display: block;
+    width: 30%;
+    height: 30px;
+}
+
+.a_ids {
+    height: 30px;
+    width: 10%;
+}
+
+
+.a_tablaR input {
+    margin: 0 5px;
+    width: 30%;
+    height: 30px;
+    ;
+}
+
+#a_resultados {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+#a_gestion button {
+    font-size: 4.3vw;
+    margin: 30px 20px;
+    width: 26vw;
+}
+
+/* ----MESA----*/
+
+#menu_btns {
+    margin: 0 5% 30px 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+.bebida-caliente {
+    width: 28%;
+    height: 70px;
+    background-color: #FBF2CF;
+    text-align: center;
+    color: #b69200;
+    font-size: 4vw;
+    font-weight: 800;
+    border-radius: 3px;
+    margin: 5px 5px;
+    padding: 0;
+}
+
+.bebida-fria {
+    width: 28%;
+    height: 70px;
+    background-color: #fce279;
+    text-align: center;
+    color: #aa8800;
+    font-size: 4vw;
+    font-weight: 800;
+    border-radius: 3px;
+    margin: 5px 5px;
+    padding: 0;
+}
+
+.primeros {
+    width: 28%;
+    height: 70px;
+    background-color: #C6EBC5;;
+    text-align: center;
+    color: #629461;;
+    font-size: 4vw;
+    font-weight: 800;
+    border-radius: 3px;
+    margin: 5px 5px;
+    padding: 0;
+}
+
+.segundos {
+    width: 28%;
+    height: 70px;
+    background-color: #ff9292;
+    text-align: center;
+    color: #a53636;
+    font-size: 4vw;
+    font-weight: 800;
+    border-radius: 3px;
+    margin: 5px 5px;
+    padding: 0;
+}
+
+.postres {
+    width: 28%;
+    height: 70px;
+    background-color: #92deff;
+    text-align: center;
+    color: #0c91ca;
+    font-size: 4vw;
+    font-weight: 800;
+    border-radius: 3px;
+    margin: 5px 5px;
+    padding: 0;
+}
+
+#screen1 {
+    position:sticky;
+    z-index: 2;
+    top: 68px;
+    left: 5%;
+    width: 100%;
+    height: 325px;
+    background-color: white;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+#screen {
+    height: 300px;
+    width: 90%;
+    border-radius: 10px;
+    background-color: #ebf8f8;
+    text-align: left;
+    margin: 0 5% 0 5%;
+}
+
+#screen h5 {
+    margin: 0 35% 3px 40%;
+}
+.pedido {
+letter-spacing: 0;
+margin: 0 0 0 10px;
+padding: 0;
+font-size: 16px;
+}
+/* ----------------------------------------- Ticket ------------------------ */
+#t_header {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(0, 0, 0, 0.5);
+    color: white;
+    text-align: right;
+    font-size: 4vw;
+}
+
+#t_head {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#t_head h1 {
+    font-size: 8vw;
+}
+
+#t_head p {
+
+    margin: 0;
+}
+
+#t_body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+    align-content: center;
+
+}
+
+#t_tabla {
+    margin-top: 10px;
+}
+
+.t_fila {
+    display: flex;
+    flex-direction: row;
+}
+
+.t_fila p {
+    margin: 2px;
+}
+
+.t_articulos {
+    text-align: left;
+}
+
+#t_pagar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* ----------------------------------------- Pago -------------------------------------- */
+#p_body {
+    align-content: center;
+}
+
+#p_total {
+    margin: 1vw 1vw;
+    padding: 0;
+    font-size: 10vw;
+}
+
+#p_contenedor {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+}
+
+#p_contenedor h4 {
+    padding: 0 5vw;
+}
+
+#p_contenedor h2 {
+    margin: 2vw 2vw;
+    padding: 0 5vw;
+}
+
+#p_caducidad {
+    display: flex;
+    flex-direction: row;
+}
+
+#p_caducidad input {
+    width: 10vw
+}
+
+#p_tpv {
+    border: black solid 2px;
+    padding: 5vw;
+    margin-bottom: 10px;
+}
+
+/* ------------------------------------------ Index --------------------------------------- */
+#i_ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
