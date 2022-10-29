@@ -1,4 +1,5 @@
 import {subir, bajar, borrarChild, camActual, getCamareros, pintaCamFooter} from './helpers.js';
+import { Ticket } from './inicia.js';
 
 //BAJA INFO E INICIA MESAS EN ESTADO ACTUAL
 ( () => {
@@ -13,21 +14,21 @@ import {subir, bajar, borrarChild, camActual, getCamareros, pintaCamFooter} from
     cargarMesas(camareroActual, mesas);
 }
 
-//BORRA MESAS ANTES DE ACTUALIZAR HTML
+//BORRA MESAS E HISTORIAL ANTES DE ACTUALIZAR HTML
 function borraMesas() {
     for (let i=1;i<=3;i++) {
         var mesas = document.querySelector(`.c_cpntainer${i}`);
         borrarChild(mesas);
     }    
+    var historial = document.querySelector("#c_historial");
+        borrarChild(historial);
 }
 
 //CARGA LA INFO EN EL HTML CAMARERO: MESAS ABIERTAS/OCUPADAS Y LIBRES
 function cargarMesas(camareroActual, mesas) {
-    //BORRA MESAS ANTERIORES PARA ACTUALIZAR
     borraMesas();
-    
     //PINTA MESAS CON ESTADO ACTUAL
-  
+
     for (let i = 0; i < 10; i++) {
         var divMesa = document.createElement('button');
         //FILTRA MESAS ABIERTAS DEL CAMARERO Y LAS PINTA
@@ -60,6 +61,7 @@ function cargarMesas(camareroActual, mesas) {
 }
 
 
+
 //CAMBIA ESTADO DE MESA Y ACTUALIZA DOM
 function checkMesa(indice, camareroActual) {
     var mesasArriba = JSON.parse(bajar('mesa'));
@@ -84,12 +86,12 @@ function historial() {
         var tickets = JSON.parse(localStorage.Tickets);
         for (let i = 0; i < tickets.length; i++) {
             if (tickets[i].camarero == camareros[camareroActual - 1].id_camarero) {
-                console.log("ENTRA EN cond")
                 var idTicket = tickets[i].id
                 var botonTicket = document.createElement('button');
                 botonTicket.className = `c_ticket`;
                 botonTicket.addEventListener('click', () => {
-                    consulta_ticket(idTicket);
+                    var consulta = {"id": i, "origen":"camarero"};
+                    subir("TicketConsulta", JSON.stringify(consulta));
                     window.location = "ticket.html"
                 })
                 var id = document.createTextNode(`Fecha: ${tickets[i].fecha} | id: ${idTicket}`);
@@ -100,3 +102,4 @@ function historial() {
     }
   
 }
+
