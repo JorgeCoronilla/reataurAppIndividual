@@ -16,7 +16,6 @@ document.getElementById("login").addEventListener("click", () => {
 
 //Funcion logIn de camareros y admin
 function iniciarSesion() {
-    console.log("ENTRA");
     let loginok;
     let loginUser = document.getElementById("user").value;
     let loginPass = document.getElementById("password").value;

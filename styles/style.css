@@ -73,6 +73,16 @@ footer h4 {
     color: white;
 }
 
+footer {
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 20px 2px 15px 5px;
+}
+
 a {
     color: white;
 }
@@ -111,6 +121,11 @@ span#header {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.spacer {
+    height: 100px;
+    width: 100%;
 }
 
 /* -------------------------INDEX-------------------- */
@@ -195,15 +210,8 @@ span#title {
 }
 
 /*-----CAMARERO-------*/
-footer {
-    position: fixed;
-    z-index: 2;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: black;
-    padding: 20px 2px 15px 5px;
-}
+
+
 
 .wrapper {
     z-index: 1;
@@ -291,12 +299,14 @@ footer {
 }
 
 .c_ticket {
-    width: 150px;
-    height: 50px;
-    background-color: rgb(201, 201, 201);
+    width: 40%;
+    height: 70px;
+    background-color: rgb(0, 0, 0);
     margin: 5px;
     text-align: center;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 800;
+    border-radius: 5px;
 }
 
 /* ------------------------------- ADMIN AREA --------------------------------------- */
@@ -490,14 +500,35 @@ p.a_rendimiento {
     margin: 0 5% 0 5%;
 }
 
-#screen h5 {
-    margin: 0 35% 3px 40%;
-}
 .pedido {
 letter-spacing: 0;
 margin: 0 0 0 10px;
 padding: 0;
 font-size: 16px;
+}
+.c_nombre p, .c_nombre{
+    display: inline;
+    margin: 0 0 0 15px;
+    padding: 0;
+}
+
+#cerrar,#revisar, #salir {
+    display: inline;
+    margin:5px 0 5px;
+    padding:15px 0 15px 0;
+    width: 30%;
+    background-color: rgb(14, 14, 14);
+    border: solid 2px rgb(80, 80, 80);
+    border-radius: 5px;;
+}
+
+#cerrar:hover,#revisar:hover, #salir:hover {
+    background-color: rgb(46, 46, 46);
+}
+
+#footComandas {
+    margin: 0;
+    padding: 0;
 }
 /* ----------------------------------------- Ticket ------------------------ */
 #t_header {

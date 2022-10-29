@@ -77,22 +77,26 @@ function enviaMesa(indice) {
 
 // PINTA HISTORIAL DE FACTURAS DEL CAMARERO ACTUAL
 function historial() {
-    var tickets = JSON.parse(localStorage.ticket);
+   
     var camareros = getCamareros();
     var camareroActual = camActual();
-
-    for (let i = 0; i < tickets.length; i++) {
-        if (tickets[i].nombre_camarero == camareros[camareroActual - 1].nombre_camarero) {
-            var idTicket = tickets[i].id_ticket
-            var botonTicket = document.createElement('button');
-            botonTicket.className = `c_ticket`;
-            botonTicket.addEventListener('click', () => {
-                consulta_ticket(idTicket);
-                window.location = "ticket.html"
-            })
-            var id = document.createTextNode(`Fecha: ${tickets[i].fecha} | id: ${idTicket}`);
-            botonTicket.appendChild(id);
-            document.querySelector('#c_historial').appendChild(botonTicket);
+    if (bajar("Tickets") != null) {
+        var tickets = JSON.parse(localStorage.Tickets);
+        for (let i = 0; i < tickets.length; i++) {
+            if (tickets[i].camarero == camareros[camareroActual - 1].id_camarero) {
+                console.log("ENTRA EN cond")
+                var idTicket = tickets[i].id
+                var botonTicket = document.createElement('button');
+                botonTicket.className = `c_ticket`;
+                botonTicket.addEventListener('click', () => {
+                    consulta_ticket(idTicket);
+                    window.location = "ticket.html"
+                })
+                var id = document.createTextNode(`Fecha: ${tickets[i].fecha} | id: ${idTicket}`);
+                botonTicket.appendChild(id);
+                document.querySelector('#c_historial').appendChild(botonTicket);
+            }
         }
     }
+  
 }

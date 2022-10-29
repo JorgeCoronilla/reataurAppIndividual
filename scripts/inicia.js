@@ -8,7 +8,6 @@ export function iniciarApp() {
         iniciarCamareros();
         iniciarMenu();
         iniciarMesas();
-        iniciarTicket();
         
     }
 }
@@ -173,17 +172,37 @@ function iniciarMenu() {
 }
 
 
-function iniciarTicket() {
-    var fecha = new Date;
-    var fechaticket = fecha.getDay() + "/" + fecha.getMonth() + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
-    var ticket = {
-        id_ticket: 0,
-        fecha: fechaticket,
-        id_mesa: 0,
-        nombre_camarero: "camarero3",
-        comanda: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        total: 0,
-        pagado: false,
+export const Ticket = class {
+
+    constructor(id, fecha, camarero, mesa, comanda, menu, pagado) {
+        this.id = id;
+        this.camarero = camarero;
+        this.mesa = mesa;
+        this.comanda = comanda
+        this.menu = menu;
+        this.fecha = fecha;
+        this.pagado = pagado;
     }
-    subir("ticket", JSON.stringify(ticket))
-}
+
+    getId() {      
+        return this.id; 
+    }
+
+    getComanda() {
+        return this.comanda;
+    }
+
+    imprime() {
+        var items=[];
+        var cantidad=[];
+        var precios=[];
+        this.comanda.forEach((element, i) => {
+            if (element > 0){
+                precios.push(this.menu[i].precio)
+                items.push(this.menu[i].nombre);
+                cantidad.push(element);
+                console.log(this.menu[i].nombre, element, (element*this.menu[i].precio));
+            }
+        });
+    }
+};

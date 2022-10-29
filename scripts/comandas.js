@@ -1,26 +1,37 @@
 import {subir, bajar, borrarChild, camActual, getCamareros, pintaCamFooter} from './helpers.js';
+import {Ticket} from './inicia.js';
 
 //BAJA INFO E INICIA MESAS EN ESTADO ACTUAL
 ( () => {
-    pintaCamFooter ();
     pintaMenu();
+    var i = camActual();
+    var camareros = getCamareros();
     var mesa = document.createElement('h5');
-    var texto = document.createTextNode(`Mesa ${bajar("mesaActual")}`);
+    mesa.className = "c_nombre";
+    var texto = document.createTextNode(`${camareros[(i - 1)].nombre_camarero}  -   Mesa ${bajar("mesaActual")}`);
     mesa.appendChild(texto);
     document.querySelector('#screen').appendChild(mesa);
+    addBtn();
 } )();
 
-//PINTA BOTONES
+//AÑADE EVENT BTN FOOTER
+function addBtn() {
+    document.getElementById("cerrar").addEventListener('click', () => { checkOut(); });
+    document.getElementById("revisar").addEventListener('click', () => { revisar(); });
+    document.getElementById("salir").addEventListener('click', () => { window.location = "mesas.html" });
+    }
+
+//PINTA BOTONES MENU
 function pintaMenu() {
 var menu = bajar("menu");
 
 JSON.parse(menu).forEach(element => {
-    var divMesa = document.createElement('button');
-    divMesa.className = element.tipo;
-    divMesa.addEventListener('click', () => { pedido(element.id_articulo); })
+    var btMenu = document.createElement('button');
+    btMenu.className = element.tipo;
+    btMenu.addEventListener('click', () => { pedido(element.id_articulo); })
     var texto = document.createTextNode((element.nombre));
-    divMesa.appendChild(texto);
-    document.querySelector('.menu_btns').appendChild(divMesa);
+    btMenu.appendChild(texto);
+    document.querySelector('.menu_btns').appendChild(btMenu);
 });
 }
 
@@ -43,9 +54,69 @@ function pintaPedido(id) {
     pedido.appendChild(texto);
     document.querySelector('#screen').appendChild(pedido);
 }
-/*
-var comandaActual=[];
-    console.log(menu.precio);
-    menu.forEach(element => {
-    comandaActual.push(element.precio)
-    });*/
+
+//PEDIR CUENTA
+function checkOut() {
+    //Recogemos datos
+    var menu = JSON.parse(bajar("menu"))
+    var mesa = JSON.parse(bajar("mesa"))
+    var numMesa = parseInt(bajar("mesaActual"));
+    mesa[numMesa].comanda
+    var fecha = new Date;
+    var fechaticket = fecha.getDay() + "/" + fecha.getMonth() + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
+    
+    //Creamos el ticket y subimos a LocalStorage
+    const newTicket = new Ticket (lastId(), fechaticket, camActual(), bajar("mesaActual"), mesa[bajar("mesaActual")].comanda, menu, false);
+    actualizaTickets(newTicket);
+    resetMesa(menu, mesa, numMesa);
+    window.location = "mesas.html"
+ }
+
+//VUELVE MESA A ESTADO INICIAL
+ function resetMesa (menu, mesa, numMesa) {
+    const resetComanda = Array(menu.length).fill(0);
+    mesa[numMesa].comanda = resetComanda;
+    mesa[numMesa].id_camarero = 0;
+    mesa[numMesa].estado = "cerrada";
+    subir("mesa", JSON.stringify(mesa));
+}
+
+
+function actualizaTickets(newTicket) {
+    switch(newTicket.getId()) {
+        case 0: 
+        subir("Tickets", JSON.stringify(newTicket));
+        break;
+        
+        case 1:
+        var oldTickets = JSON.parse(bajar("Tickets"));
+        var totalTickets = [];
+        totalTickets.push(oldTickets);
+        totalTickets.push(newTicket);
+        subir("Tickets", JSON.stringify(totalTickets));
+        break;
+        
+        default:
+        var oldTickets = JSON.parse(bajar("Tickets"));
+        oldTickets.push(newTicket);
+        subir("Tickets", JSON.stringify(oldTickets));
+    }
+ }
+
+ function lastId(){
+    if (bajar("Tickets") == null) { 
+        return 0;
+    } else {
+        var tickets = JSON.parse(bajar("Tickets"));
+        if (tickets.length == undefined) {
+            return 1;
+        } else {
+            return tickets.length
+        }
+    }  
+ }
+
+
+ function revisar(){
+
+}
