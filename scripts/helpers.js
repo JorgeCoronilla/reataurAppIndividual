@@ -26,6 +26,17 @@ export function pintaCamFooter (){
   
 }
 
+
+//VUELVE MESA A ESTADO INICIAL
+export function resetMesa(menu, mesa, numMesa) {
+    const resetComanda = Array(menu.length).fill(0);
+    mesa[numMesa].comanda = resetComanda;
+    mesa[numMesa].id_camarero = 0;
+    mesa[numMesa].estado = "cerrada";
+    subir("mesa", JSON.stringify(mesa));
+}
+
+
 export const Ticket = class {
 
     constructor(id, fecha, camarero, mesa, comanda, menu) {

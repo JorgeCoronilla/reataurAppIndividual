@@ -23,7 +23,7 @@ azul hilo: #9BD9D9
 
 body {
     height: 100%;
-    font-size: 6vw;
+    font-size: 30px;
     color: black;
     font-weight: 600;
     text-align: center;
@@ -32,12 +32,7 @@ body {
     letter-spacing: 2px;
 }
 
-.flex-wrapper {
-    display: flex;
-    min-height: 83vh;
-    flex-direction: column;
-    justify-content: space-between;
-}
+.flex-wrapper {}
 
 header {
     position: fixed;
@@ -55,22 +50,9 @@ header:hover {
 
 header h1 {
     display: inline;
-    font-size: 7vw;
+    font-size: 30px;
     margin: 0 13% 0 8%;
     color: White;
-}
-
-footer h3 {
-    display: inline;
-    font-size: 0.8em;
-    margin-left: 40%;
-    color: white;
-}
-
-footer h4 {
-    display: inline;
-    font-size: 0.9em;
-    color: white;
 }
 
 footer {
@@ -88,14 +70,14 @@ a {
 }
 
 p {
-    font-size: 5vw;
+    font-size: 22px;
     color: black;
     font-weight: 600;
     margin: 15px;
 }
 
 h2 {
-    font-size: 12vw;
+    font-size: 60px;
     color: #9BD9D9;
     margin: 35px;
 }
@@ -136,7 +118,7 @@ button {
     width: 30%;
     padding: 1%;
     margin: 25px;
-    font-size: 5vw;
+    font-size: 22px;
     color: white;
     padding: 15px;
     font-family: 'Josefin Slab', serif;
@@ -184,7 +166,7 @@ input:focus {
 
 #login {
     width: 100%;
-    margin:0 0 0 0;
+    margin: 0 0 0 0;
     padding: 0;
 }
 
@@ -202,11 +184,15 @@ span#title {
 #i_login {
     margin: 0 auto 0 auto;
     padding-top: 25px;
-    padding-bottom: 30px;;
+    padding-bottom: 30px;
+    ;
     background-color: #9BD9D9;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    min-height: fit-content;
+    max-height: 300px;
     border-radius: 1px;
+    border-radius: 8px;
+    /*margin-bottom: 50px;*/
 }
 
 /*-----CAMARERO-------*/
@@ -299,12 +285,13 @@ span#title {
 }
 
 .c_ticket {
-    width: 40%;
-    height: 70px;
-    background-color: rgb(0, 0, 0);
+    width: 80%;
+
+    background-color: #bde5e5;
+    color: #178d8d;
     margin: 5px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
     border-radius: 5px;
 }
@@ -312,6 +299,151 @@ span#title {
 /* ------------------------------- ADMIN AREA --------------------------------------- */
 
 
+
+.menu_admin {}
+
+.menu_admin h5 {
+    background-color: #fce279;
+    color: #aa8800;
+    padding: 7px;
+    width: 90%;
+    margin: 5px 5% 15px 5%;
+    border-radius: 5px;
+}
+
+.submenu {
+    background-color: #FBF2CF;
+    color: #b69200;
+
+    padding: 7px;
+    width: 90%;
+    margin: 10px 5% 5px 5%;
+    border-radius: 5px;
+
+}
+
+.añadirArticulo {
+    background-color: #ffe88e;
+    color: #b69200;
+
+    padding: 7px;
+    width: 40%;
+    margin: 20px 5% 5px 5%;
+    border-radius: 5px;
+    font-weight: 400;
+
+}
+
+.gestionCamareros {
+display: flex;
+flex-direction: column;
+margin-top: 20px;;
+
+}
+
+.row1 {
+    border: solid 3px  #fce279;;
+    border-radius: 5px;;
+    width:80%;
+    margin-left:10%;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+.labelName {
+    display: block;
+    font-size: 15px;
+    color: #aa8800;
+    text-align: left;
+    margin-left: 40px;
+
+}
+
+.userName, .userPass, .menuInput, select { 
+    font-size: 22px;
+    width:80%;
+    border-bottom: #aa8800 solid 1px;
+    margin-bottom: 5px;
+}
+
+select {
+    font-size: 22px;
+    width:80%;
+    border-bottom: #aa8800 solid 1px;
+    color: #aa8800;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    font-family: 'Josefin Slab', serif;
+
+}
+    
+.content {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 5% 5px 5%;
+    justify-content: center;
+    background-color: #9BD9D9;
+    padding: 0;
+    border-radius: 5px;
+
+}
+
+.content p {
+    font-size: 17px;
+    margin-left: 3px;
+}
+
+details summary {
+    list-style-type: none;
+    transition: 0.5s linear;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary::marker {
+    display: none;
+}
+
+#a_resultados {
+   margin: 30px 5% 30px 5%;
+}
+
+#salirAdmin {
+    display: inline;
+    margin: 5px 0 5px;
+    padding: 15px 0 15px 0;
+    width: 100%;
+    background-color: rgb(14, 14, 14);
+    border: solid 2px rgb(80, 80, 80);
+    border-radius: 5px;
+}
+
+/*
+#a_tabla {
+    padding: 0 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.a_tablaH {
+    height: 12vw;
+    font-size: 3.8vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-right: 4vw;
+    text-align: start;
+}
+
+.a_tablaR {
+    height: 12vw;
+    font-size: 3.8vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 
 header#a_header {
@@ -402,7 +534,7 @@ p.a_rendimiento {
     margin: 30px 20px;
     width: 26vw;
 }
-
+*/
 /* ----MESA----*/
 
 #menu_btns {
@@ -413,6 +545,7 @@ p.a_rendimiento {
     justify-content: center;
     padding: 0;
 }
+
 .bebida-caliente {
     width: 28%;
     height: 70px;
@@ -442,9 +575,11 @@ p.a_rendimiento {
 .primeros {
     width: 28%;
     height: 70px;
-    background-color: #C6EBC5;;
+    background-color: #C6EBC5;
+    ;
     text-align: center;
-    color: #629461;;
+    color: #629461;
+    ;
     font-size: 4vw;
     font-weight: 800;
     border-radius: 3px;
@@ -479,7 +614,7 @@ p.a_rendimiento {
 }
 
 #screen1 {
-    position:sticky;
+    position: sticky;
     z-index: 2;
     top: 68px;
     left: 5%;
@@ -505,27 +640,36 @@ p.a_rendimiento {
     height: 100px;
     background-color: #6c8549;
 }
+
 .pedido {
-margin: 10px 0 5px 30px;
-padding: 0;
-font-size: 16px;
+    margin: 10px 0 5px 30px;
+    padding: 0;
+    font-size: 16px;
 }
-.c_nombre p, .c_nombre{
+
+.c_nombre p,
+.c_nombre {
     margin: 10px 0 20px 15px;
     padding: 0;
 }
 
-#cerrar,#revisar, #salir {
+#cerrar,
+#revisar,
+#salir {
     display: inline;
-    margin:5px 0 5px;
-    padding:15px 0 15px 0;
+    margin: 5px 0 5px;
+    padding: 15px 0 15px 0;
     width: 30%;
     background-color: rgb(14, 14, 14);
     border: solid 2px rgb(80, 80, 80);
-    border-radius: 5px;;
+    border-radius: 5px;
 }
 
-#cerrar:hover,#revisar:hover, #salir:hover {
+
+
+#cerrar:hover,
+#revisar:hover,
+#salir:hover {
     background-color: rgb(46, 46, 46);
 }
 
@@ -546,23 +690,26 @@ font-size: 16px;
     width: 60%;
     text-align: left;
     margin-left: 15px;
-    
+
 }
 
 #col2 {
     width: 15%;
     border-right: 1px solid black;
-    
+
 }
 
 #col3 {
     width: 25%;
-   
+
 }
+
 #total {
     text-align: right;
-    margin-right: 20px;;
+    margin-right: 20px;
+    ;
 }
+
 .divider {
     height: 3px;
     width: 75%;

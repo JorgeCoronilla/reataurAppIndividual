@@ -1,4 +1,4 @@
-import { subir, bajar, borrarChild, camActual, getCamareros, pintaCamFooter } from './helpers.js';
+import { subir, bajar, borrarChild, camActual, getCamareros, resetMesa } from './helpers.js';
 import { Ticket } from './inicia.js';
 
 (() => {
@@ -11,24 +11,33 @@ function consultaTicket() {
     var camarero = JSON.parse(bajar("camarero"));
     var id = consulta.id;
     var ticket = JSON.parse(bajar("Tickets"));
-    var ticketConsulta = new Ticket(ticket[id].id, ticket[id].fecha, ticket[id].camarero, ticket[id].mesa, ticket[id].comanda, ticket[id].menu, ticket[id].pagado);
+    var ticketConsulta = new Ticket(ticket[id].id, ticket[id].fecha, ticket[id].camarero, ticket[id].mesa, ticket[id].comanda, ticket[id].menu, ticket[id].pagado,ticket[id].ultimaMod);
+    var numMesa = parseInt(bajar("mesaActual"));
+    
+    if (numMesa == 10) {
+      
+      var mesa = JSON.parse(bajar("mesa"));
+      var menu = JSON.parse(bajar("menu"));
+     ticketConsulta.getComanda(mesa[10].comanda);
+     
+    resetMesa(menu, mesa, numMesa);}
 
     document.querySelector("p").innerHTML = `ID: ${ticket[id].id}`;
     document.querySelector("h5").innerHTML = `Atendido por: ${camarero[ticket[id].camarero].nombre_camarero}`;
     ticketConsulta.imprime();
-    preparaBtn(consulta.origen, ticketConsulta.getId())
+    preparaBtn(consulta.origen, ticketConsulta)
 }
 
-function preparaBtn(origen, id) {
+function preparaBtn(origen, ticket) {
     if (origen == "camarero") {
-       opcionCamarero (id);
+       opcionCamarero (ticket);
     }
     if (origen == "cliente") {
-        preparaCliente();
+        preparaCliente(ticket);
     }
 }
 
-function opcionCamarero (id) {
+function opcionCamarero (ticket) {
     document.querySelector("#cerrar").innerText = "volver";
     document.getElementById("cerrar").addEventListener('click', () => {
         var consulta = { "id": null, "origen": "vacio" };
@@ -37,17 +46,14 @@ function opcionCamarero (id) {
     });
 
     document.getElementById("revisar").addEventListener('click', () => {
-        if (ticketConsulta.pagado==true) {
+        if (ticket.pagado==true) {
             alert ("Este ticket ya está abonado, no puedes hacer modificaciones")
         } else {
-            subir("mesaActual", "11");
+            subir("mesaActual", "10");
             var mesasArriba = JSON.parse(bajar('mesa'));
-            mesasArriba[11].estado = 'abierta';
-            mesasArriba[11].id_camarero = camareroActual;
-            mesasArriba[11].comanda = ticketConsulta.comanda;
+            mesasArriba[10].id_camarero = camActual();
+            mesasArriba[10].comanda = ticket.comanda;
             subir('mesa', JSON.stringify(mesasArriba));
-            /*var consulta = { "id": null, "origen": "vacio" };
-            subir("TicketConsulta", JSON.stringify(consulta));*/
             window.location = "comandas.html";
         }
       
@@ -61,5 +67,5 @@ function opcionCamarero (id) {
 }
 
 function preparaCliente() {
-    
+
 }

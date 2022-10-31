@@ -1,11 +1,9 @@
-import { subir, bajar, borrarChild, camActual, getCamareros, pintaCamFooter } from './helpers.js';
+import { subir, bajar, borrarChild, camActual, getCamareros, resetMesa } from './helpers.js';
 import { Ticket } from './inicia.js';
 
 //BAJA INFO E INICIA MESAS EN ESTADO ACTUAL
 (() => {
-    
-    var numMesa = JSON.parse(bajar("mesaActual"));
-    if (numMesa == 11) {revisar();}
+
     pintaMenu(0);
     pintaPedido();
     addBtn();
@@ -62,17 +60,28 @@ function pintaPedido() {
     var menu = JSON.parse(bajar("menu"));
     var i = JSON.parse(bajar("mesaActual"));
     var mesas = JSON.parse(bajar("mesa"));
+    var camarero = JSON.parse(bajar("camarero"))
+    var camarero =(camarero[mesas[i].id_camarero].nombre_camarero)
+    var item = document.createElement("p");
+    item.className = `pedido`;
+    var texto1 = document.createTextNode((` Mesa ${i} | ${camarero}`));
+            item.appendChild(texto1);
+            document.getElementById('screen').appendChild(item);
 
+            var spacer = document.createElement("br");
+            document.getElementById('screen').appendChild(spacer);
+ 
     mesas[i].comanda.forEach((element, num) => {
         if (element > 0) {
             total += element * menu[num].precio;
+
             var item = document.createElement("p");
             item.className = `pedido`;
             var texto = document.createTextNode((`* ${menu[num].nombre} ${element}  X ${menu[num].precio}`))
             item.appendChild(texto);
             document.getElementById('screen').appendChild(item);
         }
-    });
+    }); 
     var item = document.createElement("br");
     document.querySelector('#screen').appendChild(item);
     var item = document.createElement("p");
@@ -84,29 +93,42 @@ function pintaPedido() {
 
 //PEDIR CUENTA
 function checkOut() {
-    //Recogemos datos
-    var menu = JSON.parse(bajar("menu"))
     var mesa = JSON.parse(bajar("mesa"))
     var numMesa = parseInt(bajar("mesaActual"));
-    mesa[numMesa].comanda
-    var fecha = new Date;
-    var fechaticket = fecha.getDay() + "/" + fecha.getMonth() + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
+    if (numMesa != 10) {
+        checkoutNormal(mesa);
+    } else {
+        checkoutTicket(mesa)
+    }
+}
 
-    //Creamos el ticket y subimos a LocalStorage
-    const newTicket = new Ticket(lastId(), fechaticket, camActual(), bajar("mesaActual"), mesa[bajar("mesaActual")].comanda, menu, false);
+// CREAMOS TICKET
+function checkoutNormal(mesa) {
+    var menu = JSON.parse(bajar("menu"))
+    var numMesa = parseInt(bajar("mesaActual"));
+    var fecha = new Date;
+    var fechaticket = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
+    const newTicket = new Ticket(lastId(), fechaticket, camActual(), bajar("mesaActual"), mesa[bajar("mesaActual")].comanda, menu, false, "No mdoficado");
     actualizaTickets(newTicket);
     resetMesa(menu, mesa, numMesa);
+    finRevision();
     window.location = "mesas.html"
 }
 
-//VUELVE MESA A ESTADO INICIAL
-function resetMesa(menu, mesa, numMesa) {
-    const resetComanda = Array(menu.length).fill(0);
-    mesa[numMesa].comanda = resetComanda;
-    mesa[numMesa].id_camarero = 0;
-    mesa[numMesa].estado = "cerrada";
-    subir("mesa", JSON.stringify(mesa));
+//ACTUALIZAMOS TICKET EN REVISIÓN
+function checkoutTicket(mesa) {
+    let reference = JSON.parse(localStorage.TicketConsulta);
+        let oldTickets = JSON.parse(localStorage.Tickets);
+        oldTickets[reference.id].comanda = mesa[10].comanda;
+
+        var fecha = new Date;
+        var fechaticket = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
+        oldTickets[reference.id].ultimaMod = fechaticket;
+        subir("Tickets", JSON.stringify(oldTickets));
+
+        window.location = "ticket.html"
 }
+
 
 //SUBE NUEVO TICKET A LOCALSTORAGE
 function actualizaTickets(newTicket) {
@@ -153,7 +175,6 @@ function revisar() {
 
 //BORRAR ARTICULOS DE LA COMANDA
 function borrar(num) {
-    console.log("ENTRA EN BORRAR")
     var numMesa = JSON.parse(bajar("mesaActual"));
     var mesa = JSON.parse(bajar("mesa"))
     var aux = (mesa[numMesa].comanda[num] - 1);
@@ -164,16 +185,13 @@ function borrar(num) {
 
 //CAMBIOS VISUALES PARA MODO REVISION
 function modoRevision() {
-    document.querySelector("#cerrar").innerText="terminar";
-    document.getElementById("cerrar").addEventListener('click', () => { finRevision(); });
     document.body.style.backgroundColor = "#a53636";
     document.querySelector("#screen1").style.backgroundColor = "#a53636";
+    addBtn();
 }
 
 //VUELTA A MODO NORMAL
 function finRevision() {
-    document.querySelector("#cerrar").innerText="cerrar";
-    document.getElementById("cerrar").addEventListener('click', () => { checkOut(); });
     document.body.style.backgroundColor = "#white";
     document.querySelector("#screen1").style.backgroundColor = "#white";
     pintaMenu(0);

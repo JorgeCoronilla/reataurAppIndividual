@@ -76,25 +76,25 @@ function iniciarMenu() {
         {
             "id_articulo": 4,
             "tipo": "bebida-fria",
-            "nombre": "agua peq",
+            "nombre": "agua pequeña",
             "precio": 1.5
         },
         {
             "id_articulo": 5,
             "tipo": "bebida-fria",
-            "nombre": "agua grand",
+            "nombre": "agua grande",
             "precio": 1.5
         },
         {
             "id_articulo": 6,
             "tipo": "bebida-fria",
-            "nombre": "vico copa",
+            "nombre": "vino copa",
             "precio": 2.5
         },
         {
             "id_articulo": 7,
             "tipo": "bebida-fria",
-            "nombre": "vico copa reserv",
+            "nombre": "vino copa reserv",
             "precio": 3.5
         },
         {
@@ -232,7 +232,7 @@ function iniciarMenu() {
 
 export const Ticket = class {
 
-    constructor(id, fecha, camarero, mesa, comanda, menu, pagado) {
+    constructor(id, fecha, camarero, mesa, comanda, menu, pagado, ultimaMod) {
         this.id = id;
         this.camarero = camarero;
         this.mesa = mesa;
@@ -240,6 +240,7 @@ export const Ticket = class {
         this.menu = menu;
         this.fecha = fecha;
         this.pagado = pagado;
+        this.ultimaMod = ultimaMod
     }
 
     getId() {
@@ -248,6 +249,14 @@ export const Ticket = class {
 
     getComanda() {
         return this.comanda;
+    }
+
+    getComanda(comanda) {
+        return this.comanda;
+    }
+
+    setUltimaMod (ultimaMod) {
+        this.ultimaMod = ultimaMod
     }
 
     imprime() {
@@ -279,6 +288,5 @@ export const Ticket = class {
                 var texto4 = document.createTextNode(`Total: * ${importe} *`);
                 total.appendChild(texto4);
                 document.querySelector("#total").appendChild(total)
-                console.log(total);
     }
 };

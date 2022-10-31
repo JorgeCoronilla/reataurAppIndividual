@@ -1,72 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Area</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="images/" href="/images/android-icon-192x192.png">
+
+
 </head>
 
-<body id="a_body" onload="cargarGraficos();">
+<body>
 
     <header>
-        <h2>Admin Área</h2>
-        <h4><a href="index.html">Salir</a></h4>
+        <h1>Restaur<span id="header">App</span></h1>
     </header>
-    <div id="a_gestion">
-        <h2>Gestión de camareros</h2>
-        <div id="a_tabla">
-            <div class="a_tablaH">
-                <p></p>
-                <p>Nombre</p>
-                <p>Password</p>
-                <p>Mesas</p>
-            </div>
-            <div class="a_tablaR">
-                <p class="a_ids">ID 1: </p>
-                <input type="text" class="userName" placeholder="">
-                <input type="text" class="userPass" placeholder="">
-                <p class="a_rendimiento"> </p>
-            </div>
-            <div class="a_tablaR">
-                <p class="a_ids">ID 2: </p>
-                <input type="text" class="userName" placeholder="">
-                <input type="text" class="userPass" placeholder="">
-                <p class="a_rendimiento"> </p>
-            </div>
-            <div class="a_tablaR">
-                <p class="a_ids">ID 3: </p>
-                <input type="text" class="userName" placeholder="">
-                <input type="text" class="userPass" placeholder="">
-                <p class="a_rendimiento"> </p>
-            </div>
-            <div class="a_tablaR">
-                <p class="a_ids">ID 4: </p>
-                <input type="text" class="userName" placeholder="">
-                <input type="text" class="userPass" placeholder="">
-                <p class="a_rendimiento"> </p>
+    <div class="wrapper">
+        <div id="scroll-content">
+            <h3>Admin</h3>
+            <div class="spacer"></div>
+            <div class="menu_admin">
+
+                <details>
+                    <summary>
+                        <h5>Estado de mesas</h5>
+                    </summary>
+                    
+
+                    <p class="camareroAt"></p>
+                    <p class="mesasAtendidas"></p>
+                    <p class="camareroAt"></p>
+                    <p class="mesasAtendidas"> </p>
+                    <p class="camareroAt"></p>
+                    <p class="mesasAtendidas"> </p>
+                    <p class="camareroAt"></p>
+                    <p class="mesasAtendidas"> </p>
+
+                    <br>
+                    <br>
+                </details>
+                <details>
+                    <summary>
+                        <h5>Gestión de camareros</h5>
+                    </summary>
+                    <p>Aquí puedes visualizar y actualizar el nombre de usuario y contraseña de los empleados.</p>
+                    <button class="submenu" id="mostrarDatos">Mostrar datos</button>
+                    <button class="submenu" id="guardarCambios">Guardar cambios</button>
+                    <div class="gestionCamareros">
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 1</label>
+                            <input type="text" class="userName" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" placeholder="">
+                        </div>
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 2</label>
+                            <input type="text" class="userName" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" placeholder="">
+                        </div>
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 3</label>
+                            <input type="text" class="userName" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" placeholder="">
+                        </div>
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 4</label>
+                            <input type="text" class="userName" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" placeholder="">
+                        </div>
+
+                    </div>
+                    <div class="spacer"></div>
+                </details>
+
+                <details>
+                    <summary>
+                        <h5>Resultados</h5>
+                    </summary>
+                    <button class="a_resultados1 submenu">Total/mesas</button>
+                    <button class="a_resultados1 submenu">Total/importes</button>
+
+                    <div id="a_resultados"></div>
+                    <div class="spacer"></div>
+                </details>
+
+                <details>
+                    <summary>
+                        <h5>Gestion de menú</h5>
+                    </summary>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Añadir artículo</h6>
+                        </summary>
+                        <br>
+                        <p>Aquí puedes añadir un nuevo artículo al menú.</p>
+                        <br>
+                        <div class="row1">
+                            <label for="name" class="labelName">Tipo</label>
+                            <select name="select">
+                                <option class="menuInput" value="value1">bebidas calientes</option>
+                                <option class="menuInput" value="value2" selected>bebidas frías</option>
+                                <option class="menuInput" value="value3">primeros</option>
+                                <option class="menuInput" value="value4">segundos</option>
+                                <option class="menuInput" value="value5">postres</option>
+                            </select>
+                            <label for="name" class="labelName">Nombre</label>
+                            <input type="text" class="Tipo menuInput" placeholder="">
+                            <label for="pass" class="labelName">precio</label>
+                            <input type="number" class="menuInput" placeholder="">
+                            <button class="añadirArticulo" id="añadir">Añadir</button>
+                        </div>
+                        <div class="spacer"></div>
+
+                    </details>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Modificar artículo</h6>
+                        </summary>
+                        <br>
+                        <p>Para modificar pulsa sobre el artículo.</p>
+                        <br>
+                        <button class="añadirArticulo cargaMenu">Ver menú</button>
+                        
+                        <div class="menu_btns">
+                          
+                        </div>
+                        <div class="spacer"></div>
+                    </details>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Eliminar artículo</h6>
+                        </summary>
+                        <br>
+                        <p>Para eliminar pulsa sobre el/los artículo/s que quieras eliminar</p>
+                        <br>
+                        <button class="añadirArticulo cargaMenu">Ver menú</button>
+                        
+                        <div class="menu_btns">
+                          
+                        </div>
+                        <div class="spacer"></div>
+                    </details>
+
+                </details>
             </div>
         </div>
-        <button onclick="mostrarDatos()">Mostrar datos</button>      
-        <button onclick="guardarCambios()">Guardar cambios</button>
     </div>
-    <div class="a_resultados1">
-    <details>
-        <summary class= "c_style">
-            Resultados
-        </summary>
-        <button onclick="cargarGraficos(0)" class="a_resultados1">Total/mesas</button>
-        <button onclick="cargarGraficos(1)" class="a_resultados1">Total/importes</button>  
-    
-    </details>
-</div>
-    
-    <div id="a_resultados">
-                
-    </div>
+    <div class="spacer"></div>
+    <footer id="footComandas">
+        <button id="salirAdmin">salir</button>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="/scripts/admin.js"></script>
 </body>
+
 </html>
