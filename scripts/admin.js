@@ -39,11 +39,11 @@ function estadoMesas() {
     var mesas = JSON.parse(localStorage.mesa);
     var camarero = JSON.parse(localStorage.camarero);
     for (let i = 0; i < 4; i++) {
-        var mesasAux="";
+        var mesasAux = "";
         for (let j = 0; j < 10; j++) {
-            if (mesas[j].estado == 'abierta' && mesas[j].id_camarero == (i+1)) {
-                mesasAux+=` · ${mesas[j].numero}` 
-            } 
+            if (mesas[j].estado == 'abierta' && mesas[j].id_camarero == (i + 1)) {
+                mesasAux += ` · ${mesas[j].numero}`
+            }
         }
         mesasAtendidas[i].innerHTML = mesasAux + " ·";
         camareroAt[i].innerHTML = camarero[i].nombre_camarero;
@@ -61,7 +61,7 @@ function guardarCambios() {
         names.push(placeholders_name[i].value);
         pass.push(placeholders_pass[i].value);
     };
-   
+
     for (let k = 0; k < placeholders_name.length; k++) {
         users[k].nombre_camarero = names[k];
         users[k].password = pass[k];
@@ -185,3 +185,27 @@ function cargarGraficos(num) {
     }
 
 }
+
+function cargarMenu (modo){
+ 
+        borrarChild(document.querySelector('.menu_btns'));
+        var menu = bajar("menu");
+        JSON.parse(menu).forEach(element => {
+            var btMenu = document.createElement('button');
+            btMenu.className = element.tipo;
+            if (modo == "eliminar") {btMenu.addEventListener('click', () => { borrarArticulo(element.id_articulo); })}
+            if (modo == "modificar") {btMenu.addEventListener('click', () => { modificarArticulo(element.id_articulo); })}
+            var texto = document.createTextNode((element.nombre));
+            btMenu.appendChild(texto);
+            document.querySelector('.menu_btns').appendChild(btMenu);
+        });
+    }
+
+    function borrarArticulo(id) {
+console-log("Entra en borrar")
+    }
+
+    function modificarArticulo(id) {
+        console-log("Entra en modificar")
+
+    }
