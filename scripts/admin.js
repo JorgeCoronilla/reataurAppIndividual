@@ -1,10 +1,14 @@
-import { subir, bajar } from './helpers.js';
+import { subir, bajar, borrarChild } from './helpers.js';
 
 
 (() => {
     cargarGraficos();
     addEvents();
     estadoMesas();
+    cargarMenu();
+    document.getElementById('select2').value = "";
+    document.getElementById('nombreItem2').value = "";
+    document.getElementById('precio2').value = "";
 })();
 
 
@@ -13,10 +17,33 @@ function addEvents() {
     document.getElementById("guardarCambios").addEventListener('click', () => { guardarCambios(); });
     document.getElementsByClassName("a_resultados1")[0].addEventListener('click', () => { cargarGraficos(0) });
     document.getElementsByClassName("a_resultados1")[1].addEventListener('click', () => { cargarGraficos(1) });
-    document.getElementById("añadir").addEventListener('click', () => { añadirArticulo() });
-    document.getElementsByClassName("cargaMenu")[0].addEventListener('click', () => { cargarMenu("modificar") });
-    document.getElementsByClassName("cargaMenu")[1].addEventListener('click', () => { cargarMenu("eliminar") });
+    document.getElementById("añadir").addEventListener('click', () => { datosNuevoItem(1) });
+    document.getElementById("añadir2").addEventListener('click', () => { datosNuevoItem(2) });
     document.getElementById("salirAdmin").addEventListener('click', () => { window.location = "index.html"; });
+    
+   /* const miniBtn = document.getElementsByClassName('miniBtn');
+    miniBtn[0].addEventListener('click', () => {listenMiniBtn(0)})
+    miniBtn[1].addEventListener('click', () => {listenMiniBtn(1)})
+    miniBtn[2].addEventListener('click', () => {listenMiniBtn(2)})*/
+    //miniBtn.forEach(element => {element.addEventListener('click', () => {listenMiniBtn})})
+}
+
+
+const details = document.querySelectorAll('.mainMenu');
+details.forEach(element => {
+    element.addEventListener('toggle', toggleOpenOneOnly)
+})
+
+function toggleOpenOneOnly(e) {
+    if (this.open) {
+        details.forEach(element => {
+            if (element != this && element.open) element.open = false
+        });
+    }
+}
+
+function listenMiniBtn(id) {
+    console.log(id);
 }
 
 function mostrarDatos() {
@@ -186,26 +213,95 @@ function cargarGraficos(num) {
 
 }
 
-function cargarMenu (modo){
- 
-        borrarChild(document.querySelector('.menu_btns'));
-        var menu = bajar("menu");
-        JSON.parse(menu).forEach(element => {
-            var btMenu = document.createElement('button');
-            btMenu.className = element.tipo;
-            if (modo == "eliminar") {btMenu.addEventListener('click', () => { borrarArticulo(element.id_articulo); })}
-            if (modo == "modificar") {btMenu.addEventListener('click', () => { modificarArticulo(element.id_articulo); })}
-            var texto = document.createTextNode((element.nombre));
-            btMenu.appendChild(texto);
-            document.querySelector('.menu_btns').appendChild(btMenu);
-        });
+function cargarMenu() {
+    borrarChild(document.querySelector('.menu_btns1'));
+    borrarChild(document.querySelector('.menu_btns2'));
+    var menu = bajar("menu");
+    JSON.parse(menu).forEach(element => {
+        var btMenu1 = document.createElement('button');
+        var btMenu2 = document.createElement('button');
+        btMenu1.className = element.tipo;
+        btMenu2.className = element.tipo;
+        btMenu1.addEventListener('click', () => { modificarArticulo(element.id_articulo); })
+        btMenu2.addEventListener('click', () => { borrarArticulo(element.id_articulo); })
+        var texto1 = document.createTextNode((element.nombre));
+        var texto2 = document.createTextNode((element.nombre));
+        btMenu1.appendChild(texto1);
+        btMenu2.appendChild(texto2);
+        document.querySelector('.menu_btns1').appendChild(btMenu1);
+        document.querySelector('.menu_btns2').appendChild(btMenu2);
+    });
+}
+
+function borrarArticulo(id) {
+    var menu = JSON.parse(bajar("menu"));
+    var position;
+    menu.forEach((element, index) => { if (element.id_articulo == id) { position = index } });
+    menu.splice(position, 1);
+    console.log(id)
+    subir("menu", JSON.stringify(menu));
+    cargarMenu();
+}
+
+function modificarArticulo(id) {
+    document.getElementById('modificar').style.display = "block";
+    var menu = JSON.parse(bajar("menu"));
+    document.getElementById('select2').value = menu[id].tipo;
+    document.getElementById('nombreItem2').value = menu[id].nombre;
+    document.getElementById('precio2').value = menu[id].precio;
+    borrarArticulo(id);
+}
+
+function datosNuevoItem(id) {
+    var tipo = document.getElementById(`select${id}`).value;
+    var nombre = document.getElementById(`nombreItem${id}`).value;
+    var precio = parseFloat(document.getElementById(`precio${id}`).value);
+    document.getElementById(`select${id}`).value = "";
+    document.getElementById(`nombreItem${id}`).value = "";
+    document.getElementById(`precio${id}`).value = "";
+    añadirArticulo(tipo, nombre, precio);
+    document.getElementById('modificar').style.display = "none";
+}
+
+function añadirArticulo(tipo, nombre, precio) {
+    var menu = JSON.parse(bajar("menu"));
+    var bebidasCalientes = menu.filter(element => element.tipo == "bebida-caliente");
+    var bebidasFrias = menu.filter(element => element.tipo == "bebida-fria");
+    var primeros = menu.filter(element => element.tipo == "primeros");
+    var segundos = menu.filter(element => element.tipo == "segundos");
+    var postres = menu.filter(element => element.tipo == "postres");
+    var newItem = {
+        "id_articulo": 0,
+        "tipo": tipo,
+        "nombre": nombre,
+        "precio": precio
+    }
+    switch (tipo) {
+        case "bebida-caliente":
+            bebidasCalientes.push(newItem);
+            break;
+        case "bebida-fria":
+            bebidasFrias.push(newItem);
+            break;
+        case "primeros":
+            primeros.push(newItem);
+            break;
+        case "segundos":
+            segundos.push(newItem);
+            break;
+        case "postres":
+            postres.push(newItem);
+            break;
     }
 
-    function borrarArticulo(id) {
-console-log("Entra en borrar")
-    }
+    var newMenu = [];
+    newMenu.push(...bebidasCalientes, ...bebidasFrias, ...primeros, ...segundos, ...postres);
+    newMenu.forEach((element, id) => {
+        element.id_articulo = id
+    })
+    subir("menu", JSON.stringify(newMenu));
+    cargarMenu();
+}
 
-    function modificarArticulo(id) {
-        console-log("Entra en modificar")
 
-    }
+

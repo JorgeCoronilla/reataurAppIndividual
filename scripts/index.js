@@ -1,5 +1,5 @@
-import {subir} from './helpers.js';
-import {iniciarApp} from './inicia.js';
+import { subir, bajar } from './helpers.js';
+import { iniciarApp } from './inicia.js';
 
 
 //Inicia datos si no hay nada registrado
@@ -41,7 +41,14 @@ function iniciarSesion() {
 
 
 function consulta_ticket() {
-    let id_ticket = document.getElementById('ticketID').value;
-    subir("ticketSeleccionado", id_ticket);
-    window.location = "ticket.html";
+    let i = parseInt(document.getElementById('ticket').value);
+    var tickets = JSON.parse(bajar("Tickets"));
+    console.log(tickets.length);
+    if (i >= 0 && i<= tickets.length) {
+        var consulta = { "id": i, "origen": "cliente" };
+        subir("TicketConsulta", JSON.stringify(consulta));
+        window.location = "ticket.html"
+    } else {
+        alert("El número introducido no es correcto")
+    }
 }

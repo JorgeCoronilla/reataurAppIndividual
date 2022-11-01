@@ -19,14 +19,6 @@ export function getCamareros() {
     return JSON.parse(bajar('camarero'));
 }
 
-export function pintaCamFooter (){
-    var camareroActual = camActual();
-    var camareros = getCamareros();
-    document.getElementById('c_nombre').innerText = camareros[(camareroActual - 1)].nombre_camarero
-  
-}
-
-
 //VUELVE MESA A ESTADO INICIAL
 export function resetMesa(menu, mesa, numMesa) {
     const resetComanda = Array(menu.length).fill(0);

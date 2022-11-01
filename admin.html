@@ -28,7 +28,7 @@
             <div class="spacer"></div>
             <div class="menu_admin">
 
-                <details>
+                <details class="mainMenu">
                     <summary>
                         <h5>Estado de mesas</h5>
                     </summary>
@@ -46,7 +46,7 @@
                     <br>
                     <br>
                 </details>
-                <details>
+                <details class="mainMenu">
                     <summary>
                         <h5>Gestión de camareros</h5>
                     </summary>
@@ -83,7 +83,7 @@
                     <div class="spacer"></div>
                 </details>
 
-                <details>
+                <details class="mainMenu">
                     <summary>
                         <h5>Resultados</h5>
                     </summary>
@@ -94,7 +94,7 @@
                     <div class="spacer"></div>
                 </details>
 
-                <details>
+                <details class="mainMenu">
                     <summary>
                         <h5>Gestion de menú</h5>
                     </summary>
@@ -107,17 +107,17 @@
                         <br>
                         <div class="row1">
                             <label for="name" class="labelName">Tipo</label>
-                            <select name="select">
-                                <option class="menuInput" value="value1">bebidas calientes</option>
-                                <option class="menuInput" value="value2" selected>bebidas frías</option>
-                                <option class="menuInput" value="value3">primeros</option>
-                                <option class="menuInput" value="value4">segundos</option>
-                                <option class="menuInput" value="value5">postres</option>
+                            <select name="select" id="select1">
+                                <option class="menuInput" value="bebida-caliente">bebidas calientes</option>
+                                <option class="menuInput" value="bebida-fria">bebidas frías</option>
+                                <option class="menuInput" value="primeros">primeros</option>
+                                <option class="menuInput" value="segundos">segundos</option>
+                                <option class="menuInput" value="postres">postres</option>
                             </select>
                             <label for="name" class="labelName">Nombre</label>
-                            <input type="text" class="Tipo menuInput" placeholder="">
+                            <input type="text" class="menuInput" id="nombreItem1" placeholder="">
                             <label for="pass" class="labelName">precio</label>
-                            <input type="number" class="menuInput" placeholder="">
+                            <input type="number" class="menuInput" id="precio1" placeholder="">
                             <button class="añadirArticulo" id="añadir">Añadir</button>
                         </div>
                         <div class="spacer"></div>
@@ -130,9 +130,27 @@
                         <br>
                         <p>Para modificar pulsa sobre el artículo.</p>
                         <br>
-                        <button class="añadirArticulo cargaMenu">Ver menú</button>
+                        <div id="modificar">
+                            <div class="row1">
+                                <label for="name" class="labelName">Tipo</label>
+                                <select name="select" id="select2">
+                                    <option class="menuInput" value="bebida-caliente">bebidas calientes</option>
+                                    <option class="menuInput" value="bebida-fria">bebidas frías</option>
+                                    <option class="menuInput" value="primeros">primeros</option>
+                                    <option class="menuInput" value="segundos">segundos</option>
+                                    <option class="menuInput" value="postres">postres</option>
+                                </select>
+                                <label for="name" class="labelName">Nombre</label>
+                                <input type="text" class="menuInput" id="nombreItem2" placeholder="">
+                                <label for="pass" class="labelName">precio</label>
+                                <input type="number" class="menuInput" id="precio2" placeholder="">
+                                <button class="añadirArticulo" id="añadir2">Añadir</button>
+                            </div>
+                            <div class="spacer"></div>
+                        </div>
+                        <!--<button class="añadirArticulo cargaMenu">Ver menú</button>-->
                         
-                        <div class="menu_btns">
+                        <div class="menu_btns1">
                           
                         </div>
                         <div class="spacer"></div>
@@ -144,9 +162,8 @@
                         <br>
                         <p>Para eliminar pulsa sobre el/los artículo/s que quieras eliminar</p>
                         <br>
-                        <button class="añadirArticulo cargaMenu">Ver menú</button>
-                        
-                        <div class="menu_btns">
+                        <!--<button class="añadirArticulo cargaMenu">Ver menú</button>-->
+                        <div class="menu_btns2">
                           
                         </div>
                         <div class="spacer"></div>
@@ -161,7 +178,7 @@
         <button id="salirAdmin">salir</button>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="/reataurAppIndividual/scripts/admin.js"></script>
+    <script type="module" src="/scripts/admin.js"></script>
 </body>
 
 </html>

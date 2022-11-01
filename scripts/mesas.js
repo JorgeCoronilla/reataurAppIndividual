@@ -1,4 +1,4 @@
-import {subir, bajar, borrarChild, camActual, getCamareros, pintaCamFooter} from './helpers.js';
+import {subir, bajar, borrarChild, camActual, getCamareros} from './helpers.js';
 import { Ticket } from './inicia.js';
 
 //BAJA INFO E INICIA MESAS EN ESTADO ACTUAL
@@ -8,9 +8,9 @@ import { Ticket } from './inicia.js';
 
 
  function camareroIn() {
-    pintaCamFooter ()
     var camareroActual = camActual();
     var mesas = JSON.parse(bajar('mesa'));
+    document.getElementById("salirFooter").addEventListener('click', () => { window.location="index.html"; });
     cargarMesas(camareroActual, mesas);
 }
 

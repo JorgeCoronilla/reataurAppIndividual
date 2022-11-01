@@ -4,15 +4,7 @@ font-family: 'Josefin Slab', serif;
 font-family: 'Lato', sans-serif;
 font-family: 'Dosis', sans-serif;
 
-/*https://coolors.co/071e22-1d7874-679289-f4c095-ee2e31
 
-negro:#071E22
-Verde oscuro: #1D7874
-Verde Claro: #679289
-naranja: #F4C095
-rojo: #EE2E31
-azul hilo: #9BD9D9
-*/
 /* -------------------------GENERAL-------------------- */
 
 * {
@@ -42,10 +34,6 @@ header {
     width: 100%;
     padding: 20px 2px 10px 5px;
     background-color: black;
-}
-
-header:hover {
-    background-color: rgb(29, 120, 116, 0.2);
 }
 
 header h1 {
@@ -130,7 +118,7 @@ input {
     border-right: none;
     border-left: none;
     border-bottom: solid 2px black;
-    font-size: 7vw;
+    font-size: 18px;
     height: 25px;
     background-color: white;
     width: 20%;
@@ -150,10 +138,9 @@ input:focus {
 #i_login input {
 
     border-bottom: solid 2px black;
-    font-size: 5vw;
+    font-size: 17px;
     height: 25px;
     width: 35%;
-    font-size: 6vw;
     background-color: #9BD9D9;
 }
 
@@ -164,7 +151,7 @@ input:focus {
 
 }
 
-#login {
+#login,  #salirFooter{
     width: 100%;
     margin: 0 0 0 0;
     padding: 0;
@@ -216,7 +203,7 @@ span#title {
     margin: 7px;
     text-align: center;
     color: #d0a600;
-    font-size: 7vw;
+    font-size: 24px;
     font-weight: 800;
     border-radius: 3px;
 }
@@ -231,7 +218,7 @@ span#title {
     background-color: #C6EBC5;
     margin: 7px;
     text-align: center;
-    font-size: 7vw;
+    font-size: 24px;
     color: #6c8549;
     border-radius: 3px;
 }
@@ -247,7 +234,7 @@ span#title {
     margin: 7px;
     text-align: center;
     color: #792929;
-    font-size: 7vw;
+    font-size: 24px;
     border-radius: 3px;
 }
 
@@ -368,7 +355,7 @@ margin-top: 20px;;
 select {
     font-size: 22px;
     width:80%;
-    border-bottom: #aa8800 solid 1px;
+    border: #aa8800 solid 1px;
     color: #aa8800;
     margin-bottom: 25px;
     margin-top: 15px;
@@ -419,6 +406,19 @@ details summary::marker {
     border-radius: 5px;
 }
 
+#modificar {
+ display:none;
+}
+
+.miniBtn {
+display:inline;
+width: 25%;
+background-color: #629461;
+margin: 0;
+}
+
+
+
 /*
 #a_tabla {
     padding: 0 20px;
@@ -445,7 +445,7 @@ details summary::marker {
     align-items: center;
 }
 
-
+*/
 header#a_header {
     display: flex;
     justify-content: space-around;
@@ -653,6 +653,8 @@ p.a_rendimiento {
     padding: 0;
 }
 
+
+
 #cerrar,
 #revisar,
 #salir {
@@ -715,4 +717,9 @@ p.a_rendimiento {
     width: 75%;
     background-color: black;
     margin: 20px 10% 25px 10%;
+}
+
+.btnClient {
+    width:40%;
+    background-color: #629461;
 }
