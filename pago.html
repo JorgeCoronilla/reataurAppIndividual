@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pasarela de pago</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="images/" href="/images/android-icon-192x192.png">
 </head>
-<body onload="cargarPago()" id="p_body">
-    <header id="t_header">
-        <h4 id="t_nombre">Pago con tarjeta</h4>
-        <h4><a href="ticket.html">Volver a ticket</a></h4>
-        <h4><a href="index.html">Salir</a></h4>
+
+<body>
+    <header>
+        <h1>Restaur<span id="header">App</span></h1>
     </header>
-    <div id="p_contenedor">
-        <h1>RedBros</h1>
-        <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2019/10/06/15703723600521.jpg" alt="" srcset="" height="80px" width="160px">
-        <h2>Total a pagar</h2>
-        <p id="p_total"></p>
-        <h4>*Introduzca los datos tal cual aparecen en su tarjeta.</h4>
-        <div id="p_tpv">
-        <p>Introduzca el número de tarjeta:</p>
-        <input type="text" name="" id="num_tarjeta" required>
-        <p>Introduzca el nombre del titular:</p>
-        <input type="text" id="nombre_tarjeta" required>
-        <p>Caducidad</p>
-        <div id="p_caducidad">
-        <input type="number" placeholder="Mes" id="mes_tarjeta" required>
-        <input type="number" placeholder="Año" id="ano_tarjeta" required>
+    <div class="spacer"></div>
+    <h3><span>Pago seguro</span></h3>
+    <br>
+    <img src="/images/mastercard_logo.png" alt="mastercard logo">
+    <img src="/images/visa_logo.png" alt="visa logo">
+    <h3 id="p_total"></h3>
+    <div id="p_tpv">
+        <div id="mitadArr">
+        <p class="pagoBody">Introduzca el número de tarjeta:</p>
+        <input class="pagoBody" type="text" name="" id="num_tarjeta" required>
+        <p class="pagoBody">Introduzca el nombre del titular:</p>
+        <input class="pagoBody" type="text" id="nombre_tarjeta" required>
         </div>
-        <p>CVV</p>
-        <input type="number" name="cvv" id="cvv" required>
+        <div id="caducCVV">
+            <div id="p_caducidad">
+                <p class="pagoBody">Caducidad</p>
+                <input type="number" placeholder="Mes" id="mes_tarjeta" class="small" required>
+                <input type="number" placeholder="Año" id="ano_tarjeta" class="small" required>
+            </div>
+            <div>
+                <p class="pagoBody">CVV</p>
+                <input type="number" name="cvv" id="cvv" class="small" required>
+            </div>
+        </div>
+        
+
     </div>
-        <button onclick="checkPago()">Pagar</button>
-    </div>
-    <script src="script.js"></script>
+    <div class="spacer"></div>
+    <footer id="pagoFooter">
+        <button id="cerrar" class="footerPago">pagar</button>
+        <button id="salir" class="footerPago">salir</button>
+    </footer>
+    <script type="module" src="/scripts/pago.js"></script>
 </body>
+
 </html>

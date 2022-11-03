@@ -151,7 +151,8 @@ input:focus {
 
 }
 
-#login,  #salirFooter{
+#login,
+#salirFooter {
     width: 100%;
     margin: 0 0 0 0;
     padding: 0;
@@ -322,20 +323,24 @@ span#title {
 }
 
 .gestionCamareros {
-display: flex;
-flex-direction: column;
-margin-top: 20px;;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    ;
 
 }
 
 .row1 {
-    border: solid 3px  #fce279;;
-    border-radius: 5px;;
-    width:80%;
-    margin-left:10%;
+    border: solid 3px #fce279;
+    ;
+    border-radius: 5px;
+    ;
+    width: 80%;
+    margin-left: 10%;
     margin-bottom: 10px;
     padding-top: 10px;
 }
+
 .labelName {
     display: block;
     font-size: 15px;
@@ -345,16 +350,19 @@ margin-top: 20px;;
 
 }
 
-.userName, .userPass, .menuInput, select { 
+.userName,
+.userPass,
+.menuInput,
+select {
     font-size: 22px;
-    width:80%;
+    width: 80%;
     border-bottom: #aa8800 solid 1px;
     margin-bottom: 5px;
 }
 
 select {
     font-size: 22px;
-    width:80%;
+    width: 80%;
     border: #aa8800 solid 1px;
     color: #aa8800;
     margin-bottom: 25px;
@@ -362,7 +370,7 @@ select {
     font-family: 'Josefin Slab', serif;
 
 }
-    
+
 .content {
     display: flex;
     flex-direction: row;
@@ -393,7 +401,7 @@ details summary::marker {
 }
 
 #a_resultados {
-   margin: 30px 5% 30px 5%;
+    margin: 30px 5% 30px 5%;
 }
 
 #salirAdmin {
@@ -407,134 +415,19 @@ details summary::marker {
 }
 
 #modificar {
- display:none;
+    display: none;
 }
 
 .miniBtn {
-display:inline;
-width: 25%;
-background-color: #629461;
-margin: 0;
+    display: inline;
+    width: 25%;
+    background-color: #629461;
+    margin: 0;
 }
 
 
 
-/*
-#a_tabla {
-    padding: 0 20px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
 
-.a_tablaH {
-    height: 12vw;
-    font-size: 3.8vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-right: 4vw;
-    text-align: start;
-}
-
-.a_tablaR {
-    height: 12vw;
-    font-size: 3.8vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-*/
-header#a_header {
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(0, 0, 0, 0.5);
-    color: white;
-    text-align: right;
-    font-size: 4vw
-}
-
-#a_gestion {
-    text-align: center;
-    margin-left: 0;
-    margin-bottom: 50px;
-}
-
-#a_gestion h2 {
-    margin: 5px 0px
-}
-
-#a_tabla {
-    padding: 0 20px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.a_tablaH {
-    height: 12vw;
-    font-size: 3.8vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-right: 4vw;
-    text-align: start;
-}
-
-.a_tablaR {
-    height: 12vw;
-    font-size: 3.8vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.a_ids {
-    font-size: 3vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-p.a_rendimiento {
-    margin-left: 1vw;
-    font-size: 3.8vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.a_rendimiento {
-    display: block;
-    width: 30%;
-    height: 30px;
-}
-
-.a_ids {
-    height: 30px;
-    width: 10%;
-}
-
-
-.a_tablaR input {
-    margin: 0 5px;
-    width: 30%;
-    height: 30px;
-    ;
-}
-
-#a_resultados {
-    margin-left: 20px;
-    margin-bottom: 30px;
-}
-
-#a_gestion button {
-    font-size: 4.3vw;
-    margin: 30px 20px;
-    width: 26vw;
-}
-*/
 /* ----MESA----*/
 
 #menu_btns {
@@ -552,7 +445,7 @@ p.a_rendimiento {
     background-color: #FBF2CF;
     text-align: center;
     color: #b69200;
-    font-size: 4vw;
+    font-size: 15px;
     font-weight: 800;
     border-radius: 3px;
     margin: 5px 5px;
@@ -565,7 +458,7 @@ p.a_rendimiento {
     background-color: #fce279;
     text-align: center;
     color: #aa8800;
-    font-size: 4vw;
+    font-size: 15px;
     font-weight: 800;
     border-radius: 3px;
     margin: 5px 5px;
@@ -580,7 +473,7 @@ p.a_rendimiento {
     text-align: center;
     color: #629461;
     ;
-    font-size: 4vw;
+    font-size: 15px;
     font-weight: 800;
     border-radius: 3px;
     margin: 5px 5px;
@@ -593,7 +486,7 @@ p.a_rendimiento {
     background-color: #ff9292;
     text-align: center;
     color: #a53636;
-    font-size: 4vw;
+    font-size: 15px;
     font-weight: 800;
     border-radius: 3px;
     margin: 5px 5px;
@@ -606,7 +499,7 @@ p.a_rendimiento {
     background-color: #92deff;
     text-align: center;
     color: #0c91ca;
-    font-size: 4vw;
+    font-size: 15px;
     font-weight: 800;
     border-radius: 3px;
     margin: 5px 5px;
@@ -720,6 +613,81 @@ p.a_rendimiento {
 }
 
 .btnClient {
-    width:40%;
-    background-color: #629461;
+    width: 45%;
+    display: inline;
+    margin: 5px 0 5px;
+    padding: 15px 0 15px 0;
+    background-color: rgb(14, 14, 14);
+    border: solid 2px rgb(80, 80, 80);
+    border-radius: 5px;
+}
+
+/*--------------------------- Pago --------------------------*/
+
+#p_total{
+    border: 3px solid #fce279;
+    width: fit-content;
+    margin: 20px auto 45px auto;
+
+}
+
+h3 span {
+    border-bottom: 3px solid #92deff;
+}
+
+
+.pagoBody {
+    letter-spacing: -0.5px;
+    text-align: left;
+    font-weight: 600;
+    margin-left: 30px;
+    color: #5d5d5d;
+}
+
+input.pagoBody {
+    width: 200px;
+    border-bottom: 1px solid rgb(145, 145, 145);
+    margin-bottom: 5px;
+}
+
+#caducCVV {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: solid rgb(213, 213, 213);
+    border-left: solid rgb(213, 213, 213);
+    border-right:  solid rgb(213, 213, 213);
+    margin: 0 5% 0 5%;
+}
+
+#mitadArr {
+    border-top: solid rgb(213, 213, 213);
+    border-left: solid rgb(213, 213, 213);
+    border-right:  solid rgb(213, 213, 213);
+    margin: 0 5% 0 5%;
+}
+
+img {
+    width: 50px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.small {
+    width: 55px;
+    border-bottom: 1px solid rgb(145, 145, 145);
+    margin-bottom: 30px;
+    margin-left:20px;
+}
+#pagoFooter button{
+width: 45%;
+}
+
+#pagoFooter {
+padding: 0
+}
+
+#pagoFooter #cerrar{
+ background-color: #629461;
 }

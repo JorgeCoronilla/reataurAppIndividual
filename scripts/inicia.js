@@ -37,7 +37,8 @@ function iniciarMesas() {
             numero: `${i}`,
             estado: 'cerrada',
             id_camarero: 0,
-            comanda: comandaActual
+            comanda: comandaActual,
+            total:0
         }
         listaMesas.push(mesa);
     }
@@ -232,11 +233,12 @@ function iniciarMenu() {
 
 export const Ticket = class {
 
-    constructor(id, fecha, camarero, mesa, comanda, menu, pagado, ultimaMod) {
+    constructor(id, fecha, camarero, mesa, comanda, total, menu, pagado, ultimaMod) {
         this.id = id;
         this.camarero = camarero;
         this.mesa = mesa;
-        this.comanda = comanda
+        this.comanda = comanda;
+        this.total = total;
         this.menu = menu;
         this.fecha = fecha;
         this.pagado = pagado;
@@ -264,7 +266,6 @@ export const Ticket = class {
         var importe = 0;
         this.comanda.forEach((element, i) => {
             if (element > 0) {
-                
                 importe += this.menu[i].precio * element;
 
                 var articulo = document.createElement("p");

@@ -43,12 +43,16 @@ function iniciarSesion() {
 function consulta_ticket() {
     let i = parseInt(document.getElementById('ticket').value);
     var tickets = JSON.parse(bajar("Tickets"));
-    console.log(tickets.length);
-    if (i >= 0 && i<= tickets.length) {
-        var consulta = { "id": i, "origen": "cliente" };
-        subir("TicketConsulta", JSON.stringify(consulta));
-        window.location = "ticket.html"
+    if (tickets) {
+        if (i >= 0) {
+            var consulta = { "id": i, "origen": "cliente" };
+            subir("TicketConsulta", JSON.stringify(consulta));
+            window.location = "ticket.html"
+        } else {
+            alert("El número introducido no es correcto")
+        }
     } else {
-        alert("El número introducido no es correcto")
+        alert("No hay ningún ticket resgistrado.")
     }
+    
 }

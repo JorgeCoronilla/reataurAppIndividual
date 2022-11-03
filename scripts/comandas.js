@@ -61,10 +61,11 @@ function pintaPedido() {
     var i = JSON.parse(bajar("mesaActual"));
     var mesas = JSON.parse(bajar("mesa"));
     var camarero = JSON.parse(bajar("camarero"))
-    var camarero =(camarero[mesas[i].id_camarero].nombre_camarero)
+    var index= (JSON.parse(localStorage.getItem("camareroActual"))-1);
+    var camarero =(camarero[index].nombre_camarero)
     var item = document.createElement("p");
     item.className = `pedido`;
-    var texto1 = document.createTextNode((` Mesa ${i} | ${camarero}`));
+    var texto1 = document.createTextNode((` Mesa ${i+1} | ${camarero}`));
             item.appendChild(texto1);
             document.getElementById('screen').appendChild(item);
 
@@ -77,7 +78,7 @@ function pintaPedido() {
 
             var item = document.createElement("p");
             item.className = `pedido`;
-            var texto = document.createTextNode((`* ${menu[num].nombre} ${element}  X ${menu[num].precio}`))
+            var texto = document.createTextNode((`* ${menu[num].nombre} ${element}  X ${menu[num].precio} €`))
             item.appendChild(texto);
             document.getElementById('screen').appendChild(item);
         }
@@ -89,6 +90,8 @@ function pintaPedido() {
     var texto = document.createTextNode(`* TOTAL: ${total}`);
     item.appendChild(texto);
     document.querySelector('#screen').appendChild(item);
+    mesas[i].total=total;
+    subir("mesa", JSON.stringify(mesas));
 }
 
 //PEDIR CUENTA
@@ -105,10 +108,12 @@ function checkOut() {
 // CREAMOS TICKET
 function checkoutNormal(mesa) {
     var menu = JSON.parse(bajar("menu"))
+    var mesa = JSON.parse(bajar("mesa"))
     var numMesa = parseInt(bajar("mesaActual"));
+    var total = mesa[numMesa].total;
     var fecha = new Date;
     var fechaticket = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
-    const newTicket = new Ticket(lastId(), fechaticket, camActual(), bajar("mesaActual"), mesa[bajar("mesaActual")].comanda, menu, false, "No mdoficado");
+    const newTicket = new Ticket(lastId(), fechaticket, camActual(), bajar("mesaActual"), mesa[bajar("mesaActual")].comanda, total, menu, false, "No mdoficado");
     actualizaTickets(newTicket);
     resetMesa(menu, mesa, numMesa);
     finRevision();
@@ -120,7 +125,8 @@ function checkoutTicket(mesa) {
     let reference = JSON.parse(localStorage.TicketConsulta);
         let oldTickets = JSON.parse(localStorage.Tickets);
         oldTickets[reference.id].comanda = mesa[10].comanda;
-
+        oldTickets[reference.id].total =  mesa[10].total;
+        var numMesa = parseInt(bajar("mesaActual"));
         var fecha = new Date;
         var fechaticket = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
         oldTickets[reference.id].ultimaMod = fechaticket;
@@ -187,6 +193,10 @@ function borrar(num) {
 function modoRevision() {
     document.body.style.backgroundColor = "#a53636";
     document.querySelector("#screen1").style.backgroundColor = "#a53636";
+    document.getElementById("revisar").innerText="volver";
+    document.getElementById("revisar").addEventListener('click', () => { finRevision() });
+
+
     addBtn();
 }
 

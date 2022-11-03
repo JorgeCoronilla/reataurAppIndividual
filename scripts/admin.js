@@ -20,12 +20,6 @@ function addEvents() {
     document.getElementById("añadir").addEventListener('click', () => { datosNuevoItem(1) });
     document.getElementById("añadir2").addEventListener('click', () => { datosNuevoItem(2) });
     document.getElementById("salirAdmin").addEventListener('click', () => { window.location = "index.html"; });
-    
-   /* const miniBtn = document.getElementsByClassName('miniBtn');
-    miniBtn[0].addEventListener('click', () => {listenMiniBtn(0)})
-    miniBtn[1].addEventListener('click', () => {listenMiniBtn(1)})
-    miniBtn[2].addEventListener('click', () => {listenMiniBtn(2)})*/
-    //miniBtn.forEach(element => {element.addEventListener('click', () => {listenMiniBtn})})
 }
 
 
@@ -40,10 +34,6 @@ function toggleOpenOneOnly(e) {
             if (element != this && element.open) element.open = false
         });
     }
-}
-
-function listenMiniBtn(id) {
-    console.log(id);
 }
 
 function mostrarDatos() {
@@ -100,7 +90,7 @@ function cargarGraficos(num) {
 
     // DATOS -------------
 
-    var tickets = JSON.parse(bajar('ticket'))
+    var tickets = JSON.parse(bajar('Tickets'))
     var camareros = JSON.parse(bajar('camarero'))
     var total = [0]
     var total1 = [0]
@@ -109,19 +99,20 @@ function cargarGraficos(num) {
     var total4 = [0]
     var mesas = 0, mesas1 = 0, mesas2 = 0, mesas3 = 0, mesas4 = 0;
     var sTotal = 0, sTotal1 = 0, sTotal2 = 0, sTotal3 = 0, sTotal4 = 0;
-    if (tickets != null) {
+   if (tickets.length){
+    if (tickets) {
         for (let i = 0; i < tickets.length; i++) {
             total.push(tickets[i].total)
-            if (tickets[i].nombre_camarero == camareros[0].nombre_camarero) {
+            if (tickets[i].camarero == camareros[0].id_camarero) {
                 total1.push(tickets[i].total)
             }
-            if (tickets[i].nombre_camarero == camareros[1].nombre_camarero) {
+            if (tickets[i].camarero == camareros[1].id_camarero) {
                 total2.push(tickets[i].total)
             }
-            if (tickets[i].nombre_camarero == camareros[2].nombre_camarero) {
+            if (tickets[i].camarero == camareros[2].id_camarero) {
                 total3.push(tickets[i].total)
             }
-            if (tickets[i].nombre_camarero == camareros[3].nombre_camarero) {
+            if (tickets[i].camarero == camareros[3].id_camarero) {
                 total4.push(tickets[i].total)
             }
         }
@@ -136,172 +127,171 @@ function cargarGraficos(num) {
         sTotal3 = total3.reduce(function (a, b) { return a + b });
         sTotal4 = total4.reduce(function (a, b) { return a + b });
     } else {
-        document.getElementById('a_resultados').innerHTML = "No hay datos"
-    }
-    /*---- Config graficas ----*/
-    const labels = [
-        'total',
-        camareros[0].nombre_camarero,
-        camareros[1].nombre_camarero,
-        camareros[2].nombre_camarero,
-        camareros[3].nombre_camarero
-    ];
-    const DATA_COUNT = 4;
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Mesas servidas',
-            backgroundColor: 'blcak',
-            borderColor: 'blcak',
-            data: [mesas, mesas1, mesas2, mesas3, mesas4]
-        }]
-    };
+        document.getElementById('a_resultados').innerHTML = "No hay datos"}
+    }else{document.getElementById('a_resultados').innerHTML = "No hay datos"}
 
-    const config = {
-        type: 'bar',
-        data: data, min: 0,
-        options: {}
-    };
+        /*---- Config graficas ----*/
+        const labels = [
+            'total',
+            camareros[0].nombre_camarero,
+            camareros[1].nombre_camarero,
+            camareros[2].nombre_camarero,
+            camareros[3].nombre_camarero
+        ];
+        const DATA_COUNT = 4;
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Mesas servidas',
+                backgroundColor: 'blcak',
+                borderColor: 'blcak',
+                data: [mesas, mesas1, mesas2, mesas3, mesas4]
+            }]
+        };
 
-    const labels1 = [
-        'total',
-        camareros[0].nombre_camarero,
-        camareros[1].nombre_camarero,
-        camareros[2].nombre_camarero,
-        camareros[3].nombre_camarero
-    ];
-    const DATA_COUNT1 = 5;
-    const data1 = {
-        labels: labels1,
-        datasets: [{
-            label: 'Importe total',
-            backgroundColor: 'black',
-            borderColor: 'black',
-            data: [sTotal, sTotal1, sTotal2, sTotal3, sTotal4]
-        }]
-    };
+        const config = {
+            type: 'bar',
+            data: data, min: 0,
+            options: {}
+        };
 
-    const config1 = {
-        type: 'bar',
-        data: data1, min: 0,
-        options: {}
-    };
+        const labels1 = [
+            'total',
+            camareros[0].nombre_camarero,
+            camareros[1].nombre_camarero,
+            camareros[2].nombre_camarero,
+            camareros[3].nombre_camarero
+        ];
+        const DATA_COUNT1 = 5;
+        const data1 = {
+            labels: labels1,
+            datasets: [{
+                label: 'Importe total',
+                backgroundColor: 'black',
+                borderColor: 'black',
+                data: [sTotal, sTotal1, sTotal2, sTotal3, sTotal4]
+            }]
+        };
 
-    switch (num) {
-        case 0:
-            document.getElementById('a_resultados').innerHTML = ""
-            var canvas = document.createElement('canvas')
-            canvas.setAttribute('id', 'myChart')
-            document.getElementById('a_resultados').append(canvas)
-            const myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
+        const config1 = {
+            type: 'bar',
+            data: data1, min: 0,
+            options: {}
+        };
 
-            break;
-        case 1:
-            document.getElementById('a_resultados').innerHTML = ""
-            var canvas = document.createElement('canvas')
-            canvas.setAttribute('id', 'myChart1')
-            document.getElementById('a_resultados').append(canvas)
-            const myChart1 = new Chart(
-                document.getElementById('myChart1'),
-                config1
-            );
+        switch (num) {
+            case 0:
+                document.getElementById('a_resultados').innerHTML = ""
+                var canvas = document.createElement('canvas')
+                canvas.setAttribute('id', 'myChart')
+                document.getElementById('a_resultados').append(canvas)
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
 
-    }
+                break;
+            case 1:
+                document.getElementById('a_resultados').innerHTML = ""
+                var canvas = document.createElement('canvas')
+                canvas.setAttribute('id', 'myChart1')
+                document.getElementById('a_resultados').append(canvas)
+                const myChart1 = new Chart(
+                    document.getElementById('myChart1'),
+                    config1
+                );
 
-}
+        }
 
-function cargarMenu() {
-    borrarChild(document.querySelector('.menu_btns1'));
-    borrarChild(document.querySelector('.menu_btns2'));
-    var menu = bajar("menu");
-    JSON.parse(menu).forEach(element => {
-        var btMenu1 = document.createElement('button');
-        var btMenu2 = document.createElement('button');
-        btMenu1.className = element.tipo;
-        btMenu2.className = element.tipo;
-        btMenu1.addEventListener('click', () => { modificarArticulo(element.id_articulo); })
-        btMenu2.addEventListener('click', () => { borrarArticulo(element.id_articulo); })
-        var texto1 = document.createTextNode((element.nombre));
-        var texto2 = document.createTextNode((element.nombre));
-        btMenu1.appendChild(texto1);
-        btMenu2.appendChild(texto2);
-        document.querySelector('.menu_btns1').appendChild(btMenu1);
-        document.querySelector('.menu_btns2').appendChild(btMenu2);
-    });
-}
-
-function borrarArticulo(id) {
-    var menu = JSON.parse(bajar("menu"));
-    var position;
-    menu.forEach((element, index) => { if (element.id_articulo == id) { position = index } });
-    menu.splice(position, 1);
-    console.log(id)
-    subir("menu", JSON.stringify(menu));
-    cargarMenu();
-}
-
-function modificarArticulo(id) {
-    document.getElementById('modificar').style.display = "block";
-    var menu = JSON.parse(bajar("menu"));
-    document.getElementById('select2').value = menu[id].tipo;
-    document.getElementById('nombreItem2').value = menu[id].nombre;
-    document.getElementById('precio2').value = menu[id].precio;
-    borrarArticulo(id);
-}
-
-function datosNuevoItem(id) {
-    var tipo = document.getElementById(`select${id}`).value;
-    var nombre = document.getElementById(`nombreItem${id}`).value;
-    var precio = parseFloat(document.getElementById(`precio${id}`).value);
-    document.getElementById(`select${id}`).value = "";
-    document.getElementById(`nombreItem${id}`).value = "";
-    document.getElementById(`precio${id}`).value = "";
-    añadirArticulo(tipo, nombre, precio);
-    document.getElementById('modificar').style.display = "none";
-}
-
-function añadirArticulo(tipo, nombre, precio) {
-    var menu = JSON.parse(bajar("menu"));
-    var bebidasCalientes = menu.filter(element => element.tipo == "bebida-caliente");
-    var bebidasFrias = menu.filter(element => element.tipo == "bebida-fria");
-    var primeros = menu.filter(element => element.tipo == "primeros");
-    var segundos = menu.filter(element => element.tipo == "segundos");
-    var postres = menu.filter(element => element.tipo == "postres");
-    var newItem = {
-        "id_articulo": 0,
-        "tipo": tipo,
-        "nombre": nombre,
-        "precio": precio
-    }
-    switch (tipo) {
-        case "bebida-caliente":
-            bebidasCalientes.push(newItem);
-            break;
-        case "bebida-fria":
-            bebidasFrias.push(newItem);
-            break;
-        case "primeros":
-            primeros.push(newItem);
-            break;
-        case "segundos":
-            segundos.push(newItem);
-            break;
-        case "postres":
-            postres.push(newItem);
-            break;
     }
 
-    var newMenu = [];
-    newMenu.push(...bebidasCalientes, ...bebidasFrias, ...primeros, ...segundos, ...postres);
-    newMenu.forEach((element, id) => {
-        element.id_articulo = id
-    })
-    subir("menu", JSON.stringify(newMenu));
-    cargarMenu();
-}
+    function cargarMenu() {
+        borrarChild(document.querySelector('.menu_btns1'));
+        borrarChild(document.querySelector('.menu_btns2'));
+        var menu = bajar("menu");
+        JSON.parse(menu).forEach(element => {
+            var btMenu1 = document.createElement('button');
+            var btMenu2 = document.createElement('button');
+            btMenu1.className = element.tipo;
+            btMenu2.className = element.tipo;
+            btMenu1.addEventListener('click', () => { modificarArticulo(element.id_articulo); })
+            btMenu2.addEventListener('click', () => { borrarArticulo(element.id_articulo); })
+            var texto1 = document.createTextNode((element.nombre));
+            var texto2 = document.createTextNode((element.nombre));
+            btMenu1.appendChild(texto1);
+            btMenu2.appendChild(texto2);
+            document.querySelector('.menu_btns1').appendChild(btMenu1);
+            document.querySelector('.menu_btns2').appendChild(btMenu2);
+        });
+    }
+
+    function borrarArticulo(id) {
+        var menu = JSON.parse(bajar("menu"));
+        var position;
+        menu.forEach((element, index) => { if (element.id_articulo == id) { position = index } });
+        menu.splice(position, 1);
+        subir("menu", JSON.stringify(menu));
+        cargarMenu();
+    }
+
+    function modificarArticulo(id) {
+        document.getElementById('modificar').style.display = "block";
+        var menu = JSON.parse(bajar("menu"));
+        document.getElementById('select2').value = menu[id].tipo;
+        document.getElementById('nombreItem2').value = menu[id].nombre;
+        document.getElementById('precio2').value = menu[id].precio;
+        borrarArticulo(id);
+    }
+
+    function datosNuevoItem(id) {
+        var tipo = document.getElementById(`select${id}`).value;
+        var nombre = document.getElementById(`nombreItem${id}`).value;
+        var precio = parseFloat(document.getElementById(`precio${id}`).value);
+        document.getElementById(`select${id}`).value = "";
+        document.getElementById(`nombreItem${id}`).value = "";
+        document.getElementById(`precio${id}`).value = "";
+        añadirArticulo(tipo, nombre, precio);
+        document.getElementById('modificar').style.display = "none";
+    }
+
+    function añadirArticulo(tipo, nombre, precio) {
+        var menu = JSON.parse(bajar("menu"));
+        var bebidasCalientes = menu.filter(element => element.tipo == "bebida-caliente");
+        var bebidasFrias = menu.filter(element => element.tipo == "bebida-fria");
+        var primeros = menu.filter(element => element.tipo == "primeros");
+        var segundos = menu.filter(element => element.tipo == "segundos");
+        var postres = menu.filter(element => element.tipo == "postres");
+        var newItem = {
+            "id_articulo": 0,
+            "tipo": tipo,
+            "nombre": nombre,
+            "precio": precio
+        }
+        switch (tipo) {
+            case "bebida-caliente":
+                bebidasCalientes.push(newItem);
+                break;
+            case "bebida-fria":
+                bebidasFrias.push(newItem);
+                break;
+            case "primeros":
+                primeros.push(newItem);
+                break;
+            case "segundos":
+                segundos.push(newItem);
+                break;
+            case "postres":
+                postres.push(newItem);
+                break;
+        }
+        var newMenu = [];
+        newMenu.push(...bebidasCalientes, ...bebidasFrias, ...primeros, ...segundos, ...postres);
+        newMenu.forEach((element, id) => {
+            element.id_articulo = id
+        })
+        subir("menu", JSON.stringify(newMenu));
+        cargarMenu();
+    }
 
 
 

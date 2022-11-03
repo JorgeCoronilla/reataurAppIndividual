@@ -63,3 +63,9 @@ export const Ticket = class {
     }
 };
 
+export function limitaCarc(element, max) {
+    if(element.value.length > max) {
+        element.value = element.value.substr(0, max);
+    }
+}
+//onkeydown="limit(this, max);" onkeyup="limit(this, max);"

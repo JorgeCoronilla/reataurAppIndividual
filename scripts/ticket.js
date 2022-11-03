@@ -10,8 +10,19 @@ function consultaTicket() {
     var consulta = JSON.parse(bajar("TicketConsulta"));
     var camarero = JSON.parse(bajar("camarero"));
     var id = consulta.id;
-    var ticket = JSON.parse(bajar("Tickets"));
-    var ticketConsulta = new Ticket(ticket[id].id, ticket[id].fecha, ticket[id].camarero, ticket[id].mesa, ticket[id].comanda, ticket[id].menu, ticket[id].pagado, ticket[id].ultimaMod);
+
+    var ticketAux = JSON.parse(bajar("Tickets"));
+
+
+
+    if (ticketAux.length) {
+        var ticket = ticketAux[id];
+       
+    } else {
+        var ticket = ticketAux;
+     }
+    var ticketConsulta = new Ticket(ticket.id, ticket.fecha, ticket.camarero, ticket.mesa, ticket.comanda, ticket.total, ticket.menu, ticket.pagado, ticket.ultimaMod);
+ 
     var numMesa = parseInt(bajar("mesaActual"));
 
     if (numMesa == 10) {
@@ -21,16 +32,14 @@ function consultaTicket() {
         resetMesa(menu, mesa, numMesa);
     }
 
-    document.querySelector("p").innerHTML = `ID: ${ticket[id].id}`;
-    document.querySelector("h5").innerHTML = `Atendido por: ${camarero[ticket[id].camarero].nombre_camarero}`;
+    document.querySelector("p").innerHTML = `ID: ${ticket.id}`;
+    document.querySelector("h5").innerHTML = `Atendido por: ${camarero[(ticket.camarero-1)].nombre_camarero}`;
     ticketConsulta.imprime();
     preparaBtn(consulta.origen, ticketConsulta)
-    console.log("TERMINA LA CONSULTA");
 }
 
 
 function preparaBtn(origen, ticket) {
-    console.log("ENTRA EN PREPARADOR")
     if (origen == "camarero") {
         opcionCamarero(ticket);
     }
@@ -67,14 +76,16 @@ function opcionCamarero(ticket) {
 }
 
 function opcionCliente() {
- console.log("Entra");
  var footer= document.querySelector('footer');
  footer.removeChild(footer.firstElementChild);
- var pagarBtn = document.querySelector("#revisar")
- pagarBtn.className="btnClient";
- pagarBtn.innerHTML="Pagar"
- pagarBtn.addEventListener('click', () => {
+ var pagarBtn = document.querySelectorAll("footer button")
+ pagarBtn[0].className="btnClient";
+ pagarBtn[1].className="btnClient";
+ pagarBtn[0].innerHTML="Pagar"
+ pagarBtn[0].addEventListener('click', () => {
     window.location = "pago.html";
 });
-document.getElementById("salir").className="btnClient"
+pagarBtn[1].addEventListener('click', () => {
+    window.location = "index.html";
+});
 }
