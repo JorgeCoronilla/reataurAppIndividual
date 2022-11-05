@@ -1,44 +1,31 @@
-import { subir, bajar, borrarChild, camActual, getCamareros, resetMesa } from './helpers.js';
+import { subir, bajar, formatTicket, camActual, resetMesa, alerta } from './helpers.js';
 import { Ticket } from './inicia.js';
 
 (() => {
     consultaTicket();
 })();
 
+//Busca el ticket
 function consultaTicket() {
-
     var consulta = JSON.parse(bajar("TicketConsulta"));
     var camarero = JSON.parse(bajar("camarero"));
-    var id = consulta.id;
-
-    var ticketAux = JSON.parse(bajar("Tickets"));
-
-
-
-    if (ticketAux.length) {
-        var ticket = ticketAux[id];
-       
-    } else {
-        var ticket = ticketAux;
-     }
+    var ticket=formatTicket();
     var ticketConsulta = new Ticket(ticket.id, ticket.fecha, ticket.camarero, ticket.mesa, ticket.comanda, ticket.total, ticket.menu, ticket.pagado, ticket.ultimaMod);
- 
+    console.log(ticketConsulta);
     var numMesa = parseInt(bajar("mesaActual"));
-
     if (numMesa == 10) {
         var mesa = JSON.parse(bajar("mesa"));
         var menu = JSON.parse(bajar("menu"));
         ticketConsulta.getComanda(mesa[10].comanda);
         resetMesa(menu, mesa, numMesa);
     }
-
     document.querySelector("p").innerHTML = `ID: ${ticket.id}`;
     document.querySelector("h5").innerHTML = `Atendido por: ${camarero[(ticket.camarero-1)].nombre_camarero}`;
     ticketConsulta.imprime();
     preparaBtn(consulta.origen, ticketConsulta)
 }
 
-
+// filtra el origen (camarero o cliente)
 function preparaBtn(origen, ticket) {
     if (origen == "camarero") {
         opcionCamarero(ticket);
@@ -48,6 +35,7 @@ function preparaBtn(origen, ticket) {
     }
 }
 
+//Prepara opciones para camarero
 function opcionCamarero(ticket) {
     document.querySelector("#cerrar").innerText = "volver";
     document.getElementById("cerrar").addEventListener('click', () => {
@@ -58,7 +46,7 @@ function opcionCamarero(ticket) {
 
     document.getElementById("revisar").addEventListener('click', () => {
         if (ticket.pagado == true) {
-            alert("Este ticket ya está abonado, no puedes hacer modificaciones")
+            alerta("<p>Este ticket ya está abonado, no puedes hacer modificaciones</p>")
         } else {
             subir("mesaActual", "10");
             var mesasArriba = JSON.parse(bajar('mesa'));
@@ -75,6 +63,7 @@ function opcionCamarero(ticket) {
     });
 }
 
+//Prepara opciones para cliente
 function opcionCliente() {
  var footer= document.querySelector('footer');
  footer.removeChild(footer.firstElementChild);

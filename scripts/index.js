@@ -1,4 +1,4 @@
-import { subir, bajar } from './helpers.js';
+import { subir, bajar, alerta } from './helpers.js';
 import { iniciarApp } from './inicia.js';
 
 
@@ -23,7 +23,8 @@ function iniciarSesion() {
     let username = users.map(element => element.nombre_camarero);
     let password = users.map(element => element.password);
     let id_camarero = users.map(element => element.id_camarero);
-    if (loginUser == "admin" && loginPass == "nimda") {
+    let admin = JSON.parse(bajar("admin"));
+    if (loginUser == admin.name && loginPass == admin.pass) {
         window.location = "admin.html"
     }
     else {
@@ -35,24 +36,25 @@ function iniciarSesion() {
                 loginok = true
             }
         }
-        if (!loginok) { alert("Usuario y/o contraseña incorrecta") }
+        if (!loginok) { alerta("<p>Usuario y/o contraseña incorrecta</p>") }
     }
 }
 
-
+//Mira el id de ticket introducido, valida y lleva a si procede ticket.html
 function consulta_ticket() {
     let i = parseInt(document.getElementById('ticket').value);
-    var tickets = JSON.parse(bajar("Tickets"));
+    var tickets = JSON.parse(bajar("Tickets"))
+    
     if (tickets) {
-        if (i >= 0) {
+        if (tickets.length) { var checker= (tickets.length-1) } else { var checker=0 }
+        if (i >= 0 && i<=checker) {
             var consulta = { "id": i, "origen": "cliente" };
             subir("TicketConsulta", JSON.stringify(consulta));
             window.location = "ticket.html"
         } else {
-            alert("El número introducido no es correcto")
+            alerta("<p>El número introducido no es correcto</p>")
         }
     } else {
-        alert("No hay ningún ticket resgistrado.")
+        alerta("<p>No hay ningún ticket resgistrado.</p>")
     }
-    
 }

@@ -22,6 +22,9 @@
     <header>
         <h1>Restaur<span id="header">App</span></h1>
     </header>
+    <div id="anchor">
+        <div class="alert_container"></div>
+    </div>
     <div class="wrapper">
         <div id="scroll-content">
             <h3>Admin</h3>
@@ -32,7 +35,7 @@
                     <summary>
                         <h5>Estado de mesas</h5>
                     </summary>
-                    
+
 
                     <p class="camareroAt"></p>
                     <p class="mesasAtendidas"></p>
@@ -56,27 +59,27 @@
                     <div class="gestionCamareros">
                         <div class="row1">
                             <label for="name" class="labelName">Nombre 1</label>
-                            <input type="text" class="userName" placeholder="">
+                            <input type="text" class="userName" maxlength="12" placeholder="">
                             <label for="pass" class="labelName">password</label>
-                            <input type="text" class="userPass" placeholder="">
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
                         </div>
                         <div class="row1">
                             <label for="name" class="labelName">Nombre 2</label>
-                            <input type="text" class="userName" placeholder="">
+                            <input type="text" class="userName" maxlength="12" placeholder="">
                             <label for="pass" class="labelName">password</label>
-                            <input type="text" class="userPass" placeholder="">
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
                         </div>
                         <div class="row1">
                             <label for="name" class="labelName">Nombre 3</label>
-                            <input type="text" class="userName" placeholder="">
+                            <input type="text" class="userName" maxlength="12" placeholder="">
                             <label for="pass" class="labelName">password</label>
-                            <input type="text" class="userPass" placeholder="">
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
                         </div>
                         <div class="row1">
                             <label for="name" class="labelName">Nombre 4</label>
-                            <input type="text" class="userName" placeholder="">
+                            <input type="text" class="userName" maxlength="12" placeholder="">
                             <label for="pass" class="labelName">password</label>
-                            <input type="text" class="userPass" placeholder="">
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
                         </div>
 
                     </div>
@@ -115,9 +118,9 @@
                                 <option class="menuInput" value="postres">postres</option>
                             </select>
                             <label for="name" class="labelName">Nombre</label>
-                            <input type="text" class="menuInput" id="nombreItem1" placeholder="">
+                            <input type="text" class="menuInput" id="nombreItem1" maxlength="12" placeholder="">
                             <label for="pass" class="labelName">precio</label>
-                            <input type="number" class="menuInput" id="precio1" placeholder="">
+                            <input type="number" class="menuInput" id="precio1" min="0" max="150" placeholder="">
                             <button class="añadirArticulo" id="añadir">Añadir</button>
                         </div>
                         <div class="spacer"></div>
@@ -149,9 +152,9 @@
                             <div class="spacer"></div>
                         </div>
                         <!--<button class="añadirArticulo cargaMenu">Ver menú</button>-->
-                        
+
                         <div class="menu_btns1">
-                          
+
                         </div>
                         <div class="spacer"></div>
                     </details>
@@ -164,11 +167,30 @@
                         <br>
                         <!--<button class="añadirArticulo cargaMenu">Ver menú</button>-->
                         <div class="menu_btns2">
-                          
+
                         </div>
                         <div class="spacer"></div>
                     </details>
 
+                </details>
+                <details class="mainMenu">
+                    <summary>
+                        <h5>Cambiar contraseña</h5>
+                    </summary>
+                    <button class="submenu" id="gestionCamareros">Guardar cambios</button>
+                    <div class="passAdmon">
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre Actual</label>
+                            <input type="text" class="userName" id="oldName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password actual</label>
+                            <input type="text" class="userName"id="oldPass" maxlength="12" placeholder="">
+                            <label for="name" class="labelName">Nombre nuevo</label>
+                            <input type="text" class="userName"id="newName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password nuevo</label>
+                            <input type="text" class="userName"id="newPass" maxlength="12" placeholder="">
+                        </div>
+                    </div>
+                    <div class="spacer"></div>
                 </details>
             </div>
         </div>

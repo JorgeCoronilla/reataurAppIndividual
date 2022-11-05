@@ -19,6 +19,9 @@
     <header>
         <h1>Restaur<span id="header">App</span></h1>
     </header>
+    <div id="anchor">
+        <div class="alert_container"></div>
+    </div>
     <div class="spacer"></div>
     <h3><span>Pago seguro</span></h3>
     <br>
@@ -28,19 +31,19 @@
     <div id="p_tpv">
         <div id="mitadArr">
         <p class="pagoBody">Introduzca el número de tarjeta:</p>
-        <input class="pagoBody" type="text" name="" id="num_tarjeta" required>
+        <input class="pagoBody" type="text" name="" id="num_tarjeta" maxlength = "16"  required>
         <p class="pagoBody">Introduzca el nombre del titular:</p>
-        <input class="pagoBody" type="text" id="nombre_tarjeta" required>
+        <input class="pagoBody" type="text" id="nombre_tarjeta"  maxlength = "21" required>
         </div>
         <div id="caducCVV">
             <div id="p_caducidad">
-                <p class="pagoBody">Caducidad</p>
-                <input type="number" placeholder="Mes" id="mes_tarjeta" class="small" required>
-                <input type="number" placeholder="Año" id="ano_tarjeta" class="small" required>
+                <p class="pagoBody">Caducidad (mm/aaaa)</p>
+                <input type="number" placeholder="Mes" id="mes_tarjeta" class="small"  min="1" max="12" required>
+                <input type="number" placeholder="Año" id="ano_tarjeta" class="small"  min="2022" max="3000" required>
             </div>
             <div>
                 <p class="pagoBody">CVV</p>
-                <input type="number" name="cvv" id="cvv" class="small" required>
+                <input type="number" name="cvv" id="cvv" class="small" min="0" max="999" required>
             </div>
         </div>
         

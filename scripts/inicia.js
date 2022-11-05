@@ -8,8 +8,16 @@ export function iniciarApp() {
         iniciarCamareros();
         iniciarMenu();
         iniciarMesas();
-
+        iniciarAdmin();
     }
+}
+
+function iniciarAdmin() {
+    var admin = {
+        name : "admin",
+        pass : "nimda"
+    }
+    subir("admin", JSON.stringify(admin))
 }
 
 function iniciarCamareros() {
@@ -262,7 +270,7 @@ export const Ticket = class {
     }
 
     imprime() {
-
+        console.log()
         var importe = 0;
         this.comanda.forEach((element, i) => {
             if (element > 0) {

@@ -1,4 +1,4 @@
-import { subir, bajar, borrarChild, camActual, getCamareros, resetMesa } from './helpers.js';
+import { subir, bajar, borrarChild, camActual, resetMesa, alerta } from './helpers.js';
 import { Ticket } from './inicia.js';
 
 //BAJA INFO E INICIA MESAS EN ESTADO ACTUAL
@@ -12,7 +12,9 @@ import { Ticket } from './inicia.js';
 //AÑADE EVENT BTN FOOTER
 function addBtn() {
     document.getElementById("cerrar").addEventListener('click', () => { checkOut(); });
-    document.getElementById("revisar").addEventListener('click', () => { revisar(); });
+    document.getElementById("revisar").addEventListener('click', () => {
+        revisar();
+    });
     document.getElementById("salir").addEventListener('click', () => { window.location = "mesas.html" });
 }
 
@@ -60,18 +62,18 @@ function pintaPedido() {
     var menu = JSON.parse(bajar("menu"));
     var i = JSON.parse(bajar("mesaActual"));
     var mesas = JSON.parse(bajar("mesa"));
-    var camarero = JSON.parse(bajar("camarero"))
-    var index= (JSON.parse(localStorage.getItem("camareroActual"))-1);
-    var camarero =(camarero[index].nombre_camarero)
+    var index = (JSON.parse(localStorage.getItem("camareroActual")) - 1);
+    var camarero=JSON.parse(bajar('camarero'));
+    var camareroAct = (camarero[index].nombre_camarero)
     var item = document.createElement("p");
     item.className = `pedido`;
-    var texto1 = document.createTextNode((` Mesa ${i+1} | ${camarero}`));
-            item.appendChild(texto1);
-            document.getElementById('screen').appendChild(item);
+    var texto1 = document.createTextNode((` Mesa ${i + 1} | ${camarero}`));
+    item.appendChild(texto1);
+    document.getElementById('screen').appendChild(item);
 
-            var spacer = document.createElement("br");
-            document.getElementById('screen').appendChild(spacer);
- 
+    var spacer = document.createElement("br");
+    document.getElementById('screen').appendChild(spacer);
+
     mesas[i].comanda.forEach((element, num) => {
         if (element > 0) {
             total += element * menu[num].precio;
@@ -82,7 +84,7 @@ function pintaPedido() {
             item.appendChild(texto);
             document.getElementById('screen').appendChild(item);
         }
-    }); 
+    });
     var item = document.createElement("br");
     document.querySelector('#screen').appendChild(item);
     var item = document.createElement("p");
@@ -90,7 +92,7 @@ function pintaPedido() {
     var texto = document.createTextNode(`* TOTAL: ${total}`);
     item.appendChild(texto);
     document.querySelector('#screen').appendChild(item);
-    mesas[i].total=total;
+    mesas[i].total = total;
     subir("mesa", JSON.stringify(mesas));
 }
 
@@ -107,6 +109,8 @@ function checkOut() {
 
 // CREAMOS TICKET
 function checkoutNormal(mesa) {
+
+    alerta("<p>Se ha creado un ticket. Si necesita modificarlo solo puede hacerlo antes de que el cliente haya pago en mesas>historial</p>");
     var menu = JSON.parse(bajar("menu"))
     var mesa = JSON.parse(bajar("mesa"))
     var numMesa = parseInt(bajar("mesaActual"));
@@ -117,24 +121,9 @@ function checkoutNormal(mesa) {
     actualizaTickets(newTicket);
     resetMesa(menu, mesa, numMesa);
     finRevision();
-    window.location = "mesas.html"
+    setTimeout(() => { window.location = "mesas.html" }, 5000);
+   
 }
-
-//ACTUALIZAMOS TICKET EN REVISIÓN
-function checkoutTicket(mesa) {
-    let reference = JSON.parse(localStorage.TicketConsulta);
-        let oldTickets = JSON.parse(localStorage.Tickets);
-        oldTickets[reference.id].comanda = mesa[10].comanda;
-        oldTickets[reference.id].total =  mesa[10].total;
-        var numMesa = parseInt(bajar("mesaActual"));
-        var fecha = new Date;
-        var fechaticket = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
-        oldTickets[reference.id].ultimaMod = fechaticket;
-        subir("Tickets", JSON.stringify(oldTickets));
-
-        window.location = "ticket.html"
-}
-
 
 //SUBE NUEVO TICKET A LOCALSTORAGE
 function actualizaTickets(newTicket) {
@@ -157,6 +146,23 @@ function actualizaTickets(newTicket) {
             subir("Tickets", JSON.stringify(oldTickets));
     }
 }
+
+//ACTUALIZAMOS TICKET EN REVISIÓN
+function checkoutTicket(mesa) {
+    let reference = JSON.parse(localStorage.TicketConsulta);
+    let oldTickets = JSON.parse(localStorage.Tickets);
+    oldTickets[reference.id].comanda = mesa[10].comanda;
+    oldTickets[reference.id].total = mesa[10].total;
+    // var numMesa = parseInt(bajar("mesaActual"));
+    var fecha = new Date;
+    var fechaticket = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
+    oldTickets[reference.id].ultimaMod = fechaticket;
+    subir("Tickets", JSON.stringify(oldTickets));
+    alerta("<p>El ticket ha sido modificado con éxito</p>");
+    setTimeout(() => { window.location = "ticket.html" }, 5000);
+}
+
+
 
 //SACA ID PARA NUEVO TICKET
 function lastId() {
@@ -191,19 +197,16 @@ function borrar(num) {
 
 //CAMBIOS VISUALES PARA MODO REVISION
 function modoRevision() {
-    document.body.style.backgroundColor = "#a53636";
-    document.querySelector("#screen1").style.backgroundColor = "#a53636";
-    document.getElementById("revisar").innerText="volver";
+    document.body.style.backgroundColor = "#ffcfcf";
+    document.querySelector("#screen1").style.backgroundColor = "#ffcfcf";//"#a53636";
+    document.getElementById("revisar").innerText = "volver";
     document.getElementById("revisar").addEventListener('click', () => { finRevision() });
-
-
-    addBtn();
 }
 
 //VUELTA A MODO NORMAL
 function finRevision() {
-    document.body.style.backgroundColor = "#white";
-    document.querySelector("#screen1").style.backgroundColor = "#white";
+    document.body.style.backgroundColor = "white";
+    document.querySelector("#screen1").style.backgroundColor = "white";
     pintaMenu(0);
     pintaPedido();
     addBtn();

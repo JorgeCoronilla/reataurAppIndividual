@@ -49,7 +49,7 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     padding: 20px 2px 15px 5px;
 }
 
@@ -67,7 +67,7 @@ p {
 h2 {
     font-size: 60px;
     color: #9BD9D9;
-    margin: 35px;
+    margin: 30px;
 }
 
 h3 {
@@ -102,7 +102,7 @@ span#header {
 
 button {
     border: none;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     width: 30%;
     padding: 1%;
     margin: 25px;
@@ -117,10 +117,10 @@ input {
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: solid 2px black;
+    border-bottom: solid 1px rgb(125, 125, 125);
     font-size: 18px;
     height: 25px;
-    background-color: white;
+    background-color:rgb(248, 248, 248);
     width: 20%;
     text-align: center;
 }
@@ -137,16 +137,17 @@ input:focus {
 
 #i_login input {
 
-    border-bottom: solid 2px black;
+    border-bottom: solid 1px rgb(125, 125, 125);
     font-size: 17px;
-    height: 25px;
-    width: 35%;
-    background-color: #9BD9D9;
+    height: 35px;
+    width: 65%;
+    margin-bottom: 15px;;
+    /*background-color: #9BD9D9;*/
+    background-color:rgb(248, 248, 248);
 }
 
 #i_login input:focus {
     border-bottom: solid 1px black;
-    background-color: white;
     padding: 5px;
 
 }
@@ -171,10 +172,8 @@ span#title {
 
 #i_login {
     margin: 0 auto 0 auto;
-    padding-top: 25px;
+    padding-top: 15px;
     padding-bottom: 30px;
-    ;
-    background-color: #9BD9D9;
     width: 80%;
     min-height: fit-content;
     max-height: 300px;
@@ -242,34 +241,6 @@ span#title {
 .c_mesasR:hover {
     background-color: #fe7171;
     ;
-}
-
-#c_header {
-    background-color: rgb(0, 0, 0, 0.5);
-    color: white;
-    text-align: right;
-
-}
-
-#c_header h4 {
-    font-size: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-right: 10px;
-    padding: 5px;
-}
-
-.c_style {
-    font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-}
-
-.c_style1 {
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    background-color: brown;
-    color: white;
 }
 
 .c_ticket {
@@ -426,7 +397,19 @@ details summary::marker {
 }
 
 
-
+.mesasAtendidas {
+ border: 3px solid #fce279;
+ width: fit-content;
+ margin: 0 auto 10px auto;
+ border-radius: 40px;
+ color:#aa8800;
+ background-color: #fef9e1;
+ padding: 5px 5px 0 5px;
+}
+.camareroAt{
+margin: 0;
+color:#775f00;
+}
 
 /* ----MESA----*/
 
@@ -690,4 +673,17 @@ padding: 0
 
 #pagoFooter #cerrar{
  background-color: #629461;
+}
+
+/* ------------------ALERTS-----------------------*/
+
+#alerta {
+  padding: 20px;
+  background-color: #f44336;
+  width:90%;
+  position:absolute;
+  left:5%;
+  top:380px;
+  z-index: 5;
+  height: fit-content;
 }
