@@ -58,7 +58,6 @@ export const Ticket = class {
                 precios.push(this.menu[i].precio)
                 items.push(this.menu[i].nombre);
                 cantidad.push(element);
-                console.log(this.menu[i].nombre, element, (element * this.menu[i].precio));
             }
         });
     }

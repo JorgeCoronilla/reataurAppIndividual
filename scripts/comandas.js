@@ -99,7 +99,7 @@ function pintaPedido() {
 //PEDIR CUENTA
 function checkOut() {
     var mesa = JSON.parse(bajar("mesa"))
-    var numMesa = (parseInt(bajar("mesaActual"))-1);
+    var numMesa = (parseInt(bajar("mesaActual")));
     var comandaOK=mesa[numMesa].comanda.reduce(function (a, b) { return a + b });
     if (comandaOK>0) {
        if(numMesa < mesa.length) { checkoutNormal(mesa);

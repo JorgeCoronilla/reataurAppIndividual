@@ -80,7 +80,6 @@ function guardarCambios() {
 //Guarda cambios de admin nombre y paswors
 
 function guardarAdmin() {
-    console.log("ENTRA1");
     var oldName = document.getElementById("oldName").value;
     var newName = document.getElementById("newName").value;
     var oldPass = document.getElementById("oldPass").value;

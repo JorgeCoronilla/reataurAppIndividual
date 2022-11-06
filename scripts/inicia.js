@@ -280,7 +280,6 @@ export const Ticket = class {
     }
 
     imprime() {
-        console.log()
         var importe = 0;
         this.comanda.forEach((element, i) => {
             if (element > 0) {

@@ -14,7 +14,6 @@ function cargarPago() {
         setTimeout(() => { window.location = "index.html" }, 5000);
     }
     var precio = tickets.total
-    console.log(precio)
     var p_total = document.getElementById("p_total")
     p_total.innerText = `Total: ${precio} €`
     document.getElementById("cerrar").addEventListener('click', () => { checkPago(); });
