@@ -1,15 +1,8 @@
-/*
-font-family: 'Nunito Sans', sans-serif;
-font-family: 'Josefin Slab', serif;
-font-family: 'Lato', sans-serif;
-font-family: 'Dosis', sans-serif;
-
 
 /* -------------------------GENERAL-------------------- */
 
 * {
     box-sizing: border-box;
-    /*border: red 1px solid;*/
     margin: 0;
 }
 
@@ -23,8 +16,6 @@ body {
     font-family: 'Josefin Slab', serif;
     letter-spacing: 2px;
 }
-
-.flex-wrapper {}
 
 header {
     position: fixed;
@@ -118,7 +109,7 @@ input {
     border-right: none;
     border-left: none;
     border-bottom: solid 1px rgb(125, 125, 125);
-    font-size: 18px;
+    font-size: 22px;
     height: 25px;
     background-color:rgb(248, 248, 248);
     width: 20%;
@@ -138,18 +129,16 @@ input:focus {
 #i_login input {
 
     border-bottom: solid 1px rgb(125, 125, 125);
-    font-size: 17px;
+    font-size: 22px;
     height: 35px;
     width: 65%;
     margin-bottom: 15px;;
-    /*background-color: #9BD9D9;*/
     background-color:rgb(248, 248, 248);
 }
 
 #i_login input:focus {
     border-bottom: solid 1px black;
     padding: 5px;
-
 }
 
 #login,
@@ -179,12 +168,9 @@ span#title {
     max-height: 300px;
     border-radius: 1px;
     border-radius: 8px;
-    /*margin-bottom: 50px;*/
 }
 
 /*-----CAMARERO-------*/
-
-
 
 .wrapper {
     z-index: 1;
@@ -303,9 +289,7 @@ span#title {
 
 .row1 {
     border: solid 3px #fce279;
-    ;
     border-radius: 5px;
-    ;
     width: 80%;
     margin-left: 10%;
     margin-bottom: 10px;
@@ -318,9 +302,9 @@ span#title {
     color: #aa8800;
     text-align: left;
     margin-left: 40px;
-
 }
 
+.adminName,
 .userName,
 .userPass,
 .menuInput,
@@ -339,7 +323,6 @@ select {
     margin-bottom: 25px;
     margin-top: 15px;
     font-family: 'Josefin Slab', serif;
-
 }
 
 .content {
@@ -350,7 +333,6 @@ select {
     background-color: #9BD9D9;
     padding: 0;
     border-radius: 5px;
-
 }
 
 .content p {
@@ -411,6 +393,24 @@ margin: 0;
 color:#775f00;
 }
 
+
+#mesas_configuracion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mesasCon{
+    margin: 15px;
+    background-color: #ffe88e;
+    color: #aa8800;
+    font-weight: 600;
+}
+
+h6.mesasCon {
+    padding:20px;
+}
+
 /* ----MESA----*/
 
 #menu_btns {
@@ -452,10 +452,8 @@ color:#775f00;
     width: 28%;
     height: 70px;
     background-color: #C6EBC5;
-    ;
     text-align: center;
     color: #629461;
-    ;
     font-size: 15px;
     font-weight: 800;
     border-radius: 3px;
@@ -568,24 +566,20 @@ color:#775f00;
     width: 60%;
     text-align: left;
     margin-left: 15px;
-
 }
 
 #col2 {
     width: 15%;
     border-right: 1px solid black;
-
 }
 
 #col3 {
     width: 25%;
-
 }
 
 #total {
     text-align: right;
     margin-right: 20px;
-    ;
 }
 
 .divider {
@@ -611,7 +605,6 @@ color:#775f00;
     border: 3px solid #fce279;
     width: fit-content;
     margin: 20px auto 45px auto;
-
 }
 
 h3 span {
@@ -679,7 +672,7 @@ padding: 0
 
 #alerta {
   padding: 20px;
-  background-color: #f44336;
+  background-color: rgb(255, 185, 56);
   width:90%;
   position:absolute;
   left:5%;

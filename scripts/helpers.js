@@ -74,7 +74,7 @@ export function formatTicket() {
 
 
 
-//ALERTAS
+//ALERTAS - tiempo == 0 botón aceptar
 
 export function alerta(mensaje) {
     var container = document.querySelector(".alert_container");
@@ -83,11 +83,12 @@ export function alerta(mensaje) {
     container.appendChild(bloque);
     var ventana = document.querySelector("#alerta")
     ventana.innerHTML = mensaje;
-    document.getElementById('anchor').scrollIntoView();
-    
-    setTimeout(() => { 
-        container.removeChild(container.firstChild);
-        document.getElementById('anchor').style.paddingTop= "0"; }, 3000);
+        document.getElementById('anchor').scrollIntoView();
+
+        setTimeout(() => {
+            container.removeChild(container.firstChild);
+            document.getElementById('anchor').style.paddingTop = "0";
+        }, 4500);
 
 }
 
@@ -105,7 +106,9 @@ export function cargarGraficos(num) {
     var total4 = [0]
     var mesas = 0, mesas1 = 0, mesas2 = 0, mesas3 = 0, mesas4 = 0;
     var sTotal = 0, sTotal1 = 0, sTotal2 = 0, sTotal3 = 0, sTotal4 = 0;
-   if (tickets.length){
+   
+    if (tickets) {
+    if (tickets.length){
     if (tickets) {
         for (let i = 0; i < tickets.length; i++) {
             total.push(tickets[i].total)
@@ -135,6 +138,7 @@ export function cargarGraficos(num) {
     } else {
         document.getElementById('a_resultados').innerHTML = "No hay datos"}
     }else{document.getElementById('a_resultados').innerHTML = "No hay datos"}
+}else{document.getElementById('a_resultados').innerHTML = "No hay datos"}
 
         /*---- Config graficas ----*/
         const labels = [

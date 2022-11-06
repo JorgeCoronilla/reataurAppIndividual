@@ -1,5 +1,5 @@
 import { subir, bajar, borrarChild, alerta, cargarGraficos } from './helpers.js';
-
+import { generaMesas} from './inicia.js'
 
 // Carga datos, events, etc para inicializar
 (() => {
@@ -22,6 +22,11 @@ function addEvents() {
     document.getElementById("añadir2").addEventListener('click', () => { datosNuevoItem(2) });
     document.getElementById("salirAdmin").addEventListener('click', () => { window.location = "index.html"; });
     document.getElementById("guardarAdmin").addEventListener('click', () => { guardarAdmin() });
+    document.getElementById("mesasConMas").addEventListener('click', () => { mesasConfig(1) });
+    document.getElementById("mesasConMenos").addEventListener('click', () => { mesasConfig(-1) });
+    var mesas = JSON.parse(bajar("mesa"))
+    var mesasNum = mesas.length - 1
+    document.querySelector("h6.mesasCon").innerHTML = mesasNum;
 }
 
 //Hacer que los 'Details se cierren al abrie otro'
@@ -75,12 +80,13 @@ function guardarCambios() {
 //Guarda cambios de admin nombre y paswors
 
 function guardarAdmin() {
-    var oldName = document.getElementById("oldName");
-    var newName = document.getElementById("newName");
-    var oldPass = document.getElementById("oldPass");
-    var newPass = document.getElementById("newPass");
+    console.log("ENTRA1");
+    var oldName = document.getElementById("oldName").value;
+    var newName = document.getElementById("newName").value;
+    var oldPass = document.getElementById("oldPass").value;
+    var newPass = document.getElementById("newPass").value;
     var admin = JSON.parse(localStorage.admin);
-    if ((admin.pass === oldPass) && (admin.name === oldName) && (newName.length>0) && (newPass.length>3)) {
+    if ((admin.pass === oldPass) && (admin.name === oldName) && (newName.length > 0) && (newPass.length > 3)) {
         admin.pass = newPass;
         admin.name = newName;
         subir("admin", JSON.stringify(admin))
@@ -88,7 +94,7 @@ function guardarAdmin() {
     } else {
         alerta("<p>Comprueba los datos, no son correctos.</p>")
     }
-   
+
 }
 
 
@@ -100,7 +106,7 @@ function estadoMesas() {
     var camarero = JSON.parse(localStorage.camarero);
     for (let i = 0; i < 4; i++) {
         var mesasAux = "";
-        for (let j = 0; j < 10; j++) {
+        for (let j = 0; j < mesas.length-2; j++) {
             if (mesas[j].estado == 'abierta' && mesas[j].id_camarero == (i + 1)) {
                 mesasAux += ` · ${mesas[j].numero}`
             }
@@ -136,9 +142,8 @@ function borrarArticulo(id, mensaje) {
     var menu = JSON.parse(bajar("menu"));
     var position;
     menu.forEach((element, index) => { if (element.id_articulo == id) { position = index } });
-    if (mensaje == "mod") {
-        alerta(`<p>Artículo: <strong>${menu[position].nombre}</strong> modificado con éxito</p>`)
-    } else { alerta(`<p>Artículo: <strong>${menu[position].nombre}</strong> borrado con éxito</p>`) }
+    if (mensaje != "mod") {
+        alerta(`<p>Artículo: <strong>${menu[position].nombre}</strong> borrado con éxito</p>`) }
     menu.splice(position, 1);
     subir("menu", JSON.stringify(menu));
     cargarMenu();
@@ -212,5 +217,31 @@ function añadirArticulo(tipo, nombre, precio) {
     cargarMenu();
 }
 
+
+// Añade o elimina mesas
+function mesasConfig(operacion) {
+    var mesas = JSON.parse(bajar("mesa"))
+    var val = true;
+    var mesasNum = mesas.length - 1;
+    for (let i = 0; i < (mesasNum); i++) {
+        if (mesas[i].estado == "abierta") val = false;
+    }
+    if (!val) {
+        alerta("Esta opción no está disponible si tienes mesas abiertas");
+        setTimeout(() => { location.reload() }, 5000);
+    } else {
+        mesasNum += (operacion);
+        if (mesasNum < 4) {
+            alerta("No puedes eliminar más mesas, ya tienes el mínimo de 4");
+            setTimeout(() => { location.reload() }, 5000);
+        } else {
+            if (mesasNum > 25) {
+                alerta("No puedes añadir más mesas, ya tienes el máximo de 25");
+                setTimeout(() => { location.reload() }, 5000);
+            } else {generaMesas(mesasNum)
+                document.querySelector("h6.mesasCon").innerHTML = mesasNum;}
+        }
+    }
+}
 
 

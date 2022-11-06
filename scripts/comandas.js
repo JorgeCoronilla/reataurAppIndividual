@@ -67,7 +67,7 @@ function pintaPedido() {
     var camareroAct = (camarero[index].nombre_camarero)
     var item = document.createElement("p");
     item.className = `pedido`;
-    var texto1 = document.createTextNode((` Mesa ${i + 1} | ${camarero}`));
+    var texto1 = document.createTextNode((` Mesa ${i + 1} | ${camareroAct}`));
     item.appendChild(texto1);
     document.getElementById('screen').appendChild(item);
 
@@ -99,12 +99,15 @@ function pintaPedido() {
 //PEDIR CUENTA
 function checkOut() {
     var mesa = JSON.parse(bajar("mesa"))
-    var numMesa = parseInt(bajar("mesaActual"));
-    if (numMesa != 10) {
-        checkoutNormal(mesa);
+    var numMesa = (parseInt(bajar("mesaActual"))-1);
+    var comandaOK=mesa[numMesa].comanda.reduce(function (a, b) { return a + b });
+    if (comandaOK>0) {
+       if(numMesa < mesa.length) { checkoutNormal(mesa);
     } else {
         checkoutTicket(mesa)
-    }
+    }} else { 
+        alerta("Mesa cerrada sin artículos. No se generará ningún ticket",4500)
+        setTimeout(() => { window.location = "mesas.html" },4500)}
 }
 
 // CREAMOS TICKET

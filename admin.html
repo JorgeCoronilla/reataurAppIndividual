@@ -30,6 +30,227 @@
             <h3>Admin</h3>
             <div class="spacer"></div>
             <div class="menu_admin">
+                <details class="mainMenu">
+                    <summary>
+                        <h5>Mesas</h5>
+                    </summary>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Configuración</h6>
+                        </summary>
+                        <p>No se permiten menos de 4 mesas.</p>
+                        <div id="mesas_configuracion">
+                            <button class="mesasCon" id="mesasConMas">Añadir</button>
+                            <h6 class="mesasCon"></h6>
+                    <button class="mesasCon" id="mesasConMenos">Eliminar</button>
+                        </div>
+                        <br>
+                    </details>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Estado</h6>
+                        </summary>
+                        <p class="camareroAt"></p>
+                        <p class="mesasAtendidas"></p>
+                        <p class="camareroAt"></p>
+                        <p class="mesasAtendidas"> </p>
+                        <p class="camareroAt"></p>
+                        <p class="mesasAtendidas"> </p>
+                        <p class="camareroAt"></p>
+                        <p class="mesasAtendidas"> </p>
+                        <br>
+                        <br>
+                    </details>
+                </details>
+                <details class="mainMenu">
+                    <summary>
+                        <h5>Camareros</h5>
+                    </summary>
+                    <p>Aquí puedes visualizar y actualizar el nombre de usuario y contraseña de los empleados.</p>
+                    <button class="submenu" id="mostrarDatos">Mostrar datos</button>
+                    <button class="submenu" id="guardarCambios">Guardar cambios</button>
+                    <div class="gestionCamareros">
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 1</label>
+                            <input type="text" class="userName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
+                        </div>
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 2</label>
+                            <input type="text" class="userName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
+                        </div>
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 3</label>
+                            <input type="text" class="userName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
+                        </div>
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre 4</label>
+                            <input type="text" class="userName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password</label>
+                            <input type="text" class="userPass" maxlength="12" placeholder="">
+                        </div>
+
+                    </div>
+                    <div class="spacer"></div>
+                </details>
+                <details class="mainMenu">
+                    <summary>
+                        <h5>Menú</h5>
+                    </summary>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Añadir artículo</h6>
+                        </summary>
+                        <br>
+                        <p>Aquí puedes añadir un nuevo artículo al menú.</p>
+                        <br>
+                        <div class="row1">
+                            <label for="name" class="labelName">Tipo</label>
+                            <select name="select" id="select1">
+                                <option class="menuInput" value="bebida-caliente">bebidas calientes</option>
+                                <option class="menuInput" value="bebida-fria">bebidas frías</option>
+                                <option class="menuInput" value="primeros">primeros</option>
+                                <option class="menuInput" value="segundos">segundos</option>
+                                <option class="menuInput" value="postres">postres</option>
+                            </select>
+                            <label for="name" class="labelName">Nombre</label>
+                            <input type="text" class="menuInput" id="nombreItem1" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">precio</label>
+                            <input type="number" class="menuInput" id="precio1" min="0" max="150" placeholder="">
+                            <button class="añadirArticulo" id="añadir">Añadir</button>
+                        </div>
+                        <div class="spacer"></div>
+
+                    </details>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Modificar artículo</h6>
+                        </summary>
+                        <br>
+                        <p>Para modificar pulsa sobre el artículo.</p>
+                        <br>
+                        <div id="modificar">
+                            <div class="row1">
+                                <label for="name" class="labelName">Tipo</label>
+                                <select name="select" id="select2">
+                                    <option class="menuInput" value="bebida-caliente">bebidas calientes</option>
+                                    <option class="menuInput" value="bebida-fria">bebidas frías</option>
+                                    <option class="menuInput" value="primeros">primeros</option>
+                                    <option class="menuInput" value="segundos">segundos</option>
+                                    <option class="menuInput" value="postres">postres</option>
+                                </select>
+                                <label for="name" class="labelName">Nombre</label>
+                                <input type="text" class="menuInput" id="nombreItem2" placeholder="">
+                                <label for="pass" class="labelName">precio</label>
+                                <input type="number" class="menuInput" id="precio2" placeholder="">
+                                <button class="añadirArticulo" id="añadir2">Añadir</button>
+                            </div>
+                            <div class="spacer"></div>
+                        </div>
+                        <div class="menu_btns1">
+
+                        </div>
+                        <div class="spacer"></div>
+                    </details>
+                    <details>
+                        <summary>
+                            <h6 class="submenu">Eliminar artículo</h6>
+                        </summary>
+                        <br>
+                        <p>Para eliminar pulsa sobre el/los artículo/s que quieras eliminar</p>
+                        <br>
+                        <div class="menu_btns2">
+
+                        </div>
+                        <div class="spacer"></div>
+                    </details>
+
+                </details>
+                <details class="mainMenu">
+                    <summary>
+                        <h5>Resultados</h5>
+                    </summary>
+                    <button class="a_resultados1 submenu">Total/mesas</button>
+                    <button class="a_resultados1 submenu">Total/importes</button>
+
+                    <div id="a_resultados"></div>
+                    <div class="spacer"></div>
+                </details>
+
+                
+                <details class="mainMenu">
+                    <summary>
+                        <h5>Admin</h5>
+                    </summary>
+                    <p>La contraseña debe tener al menos 4 caracteres</p>
+                    <br>
+                    <div class="passAdmon">
+                        <div class="row1">
+                            <label for="name" class="labelName">Nombre actual</label>
+                            <input type="text" class="adminName" id="oldName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password actual</label>
+                            <input type="password" class="adminName"id="oldPass" maxlength="12" placeholder="">
+                            <label for="name" class="labelName">Nombre nuevo</label>
+                            <input type="text" class="adminName"id="newName" maxlength="12" placeholder="">
+                            <label for="pass" class="labelName">password nuevo</label>
+                            <input type="password" class="adminName"id="newPass" maxlength="12" placeholder="">
+                        </div>
+                    </div>
+                    <button class="submenu" id="guardarAdmin">Guardar cambios</button>
+                    <div class="spacer"></div>
+                </details>
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <footer id="footComandas">
+        <button id="salirAdmin">salir</button>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="/scripts/admin.js"></script>
+</body>
+
+</html>
+
+<!--
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Area</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="images/" href="/images/android-icon-192x192.png">
+
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Restaur<span id="header">App</span></h1>
+    </header>
+    <div id="anchor">
+        <div class="alert_container"></div>
+    </div>
+    <div class="wrapper">
+        <div id="scroll-content">
+            <h3>Admin</h3>
+            <div class="spacer"></div>
+            <div class="menu_admin">
 
                 <details class="mainMenu">
                     <summary>
@@ -151,7 +372,7 @@
                             </div>
                             <div class="spacer"></div>
                         </div>
-                        <!--<button class="añadirArticulo cargaMenu">Ver menú</button>-->
+                       
 
                         <div class="menu_btns1">
 
@@ -165,7 +386,7 @@
                         <br>
                         <p>Para eliminar pulsa sobre el/los artículo/s que quieras eliminar</p>
                         <br>
-                        <!--<button class="añadirArticulo cargaMenu">Ver menú</button>-->
+                       
                         <div class="menu_btns2">
 
                         </div>
@@ -203,4 +424,4 @@
     <script type="module" src="/scripts/admin.js"></script>
 </body>
 
-</html>
+</html>-->

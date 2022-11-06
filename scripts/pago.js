@@ -31,15 +31,14 @@ function checkPago() {
         setTimeout(() => { window.location = "index.html" }, 5000);
     }
 
-    if (validaNam() && cardNumVal() && fechaVal()) {
+    if (validaNam() && cardNumVal() && fechaVal() && cvvVal()) {
         ticketPagado(tickets);
         alerta("<p>Operación finalizada con éxito. ¡Gracias!</p>")
-        setTimeout(() => { window.location = "index.html" }, 4000)
+        setTimeout(() => { window.location = "index.html" }, 5000)
     } else {
         alerta( mensajeError());
     }
 }
-
 //Mensajes
 
 function mensajeError(){
@@ -47,8 +46,11 @@ function mensajeError(){
     if (!validaNam()) mensaje += "<p>El nombre introducido no es válido.</p>";
     if (!cardNumVal()) mensaje += "<p>El número de tarjeta introducido no es Visa o Mastercard</p>";
     if (!fechaVal()) mensaje += "<p>La fecha de caducidad debe ser posterior. ¿Ha caducado?</p>";
+    if (!cvvVal()) mensaje += "<p>El CVV no es correcto</p>";
+    
     return mensaje;
 }
+
 
 // Valida nombre de tarjeta
 function validaNam() {
@@ -70,8 +72,16 @@ function fechaVal() {
     var mes = document.getElementById("mes_tarjeta").value;
     var ano = document.getElementById("ano_tarjeta").value;
     var fecha = new Date;
-    return (!(ano < fecha.getFullYear()) || !(ano <= fecha.getFullYear && (mes-1) <= fecha.getMonth()))
+    return ((ano > fecha.getFullYear()) || (ano = fecha.getFullYear && (mes-1) > fecha.getMonth()))
 }
+
+function cvvVal() {
+
+    var cvv = document.getElementById("cvv").value;
+    return (cvv.length > 2 && cvv.length< 5)
+}
+
+//Actualiza ticket
 
 function ticketPagado(tickets) {
     let oldTickets = JSON.parse(localStorage.Tickets);

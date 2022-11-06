@@ -7,7 +7,7 @@ export function iniciarApp() {
     if (localStorage.length == 0) {
         iniciarCamareros();
         iniciarMenu();
-        iniciarMesas();
+        generaMesas(10);
         iniciarAdmin();
     }
 }
@@ -35,18 +35,28 @@ function iniciarCamareros() {
     subir("camarero", JSON.stringify(listaCamareros))
 }
 
-function iniciarMesas() {
+export function generaMesas(num) {
     var menu = JSON.parse(bajar("menu"));
     const comandaActual = Array(menu.length).fill(0);
     var listaMesas = [];
-    for (let i = 1; i < 12; i++) {
+    for (let i = 1; i < num+2; i++) {
 
-        var mesa = {
-            numero: `${i}`,
-            estado: 'cerrada',
-            id_camarero: 0,
-            comanda: comandaActual,
-            total:0
+        if (i < num+1) {
+            var mesa = {
+                numero: `${i}`,
+                estado: 'cerrada',
+                id_camarero: 0,
+                comanda: comandaActual,
+                total: 0
+            }
+        } else {
+            var mesa = {
+                numero: `${i}`,
+                estado: 'especial para modificar tickets',
+                id_camarero: 0,
+                comanda: comandaActual,
+                total: 0
+            }
         }
         listaMesas.push(mesa);
     }

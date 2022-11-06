@@ -1,5 +1,4 @@
 import {subir, bajar, borrarChild, camActual, getCamareros} from './helpers.js';
-import { Ticket } from './inicia.js';
 
 //BAJA INFO E INICIA MESAS EN ESTADO ACTUAL
 ( () => {
