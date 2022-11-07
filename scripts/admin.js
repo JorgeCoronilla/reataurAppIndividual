@@ -22,11 +22,6 @@ function addEvents() {
     document.getElementById("añadir2").addEventListener('click', () => { datosNuevoItem(2) });
     document.getElementById("salirAdmin").addEventListener('click', () => { window.location = "index.html"; });
     document.getElementById("guardarAdmin").addEventListener('click', () => { guardarAdmin() });
-    document.getElementById("mesasConMas").addEventListener('click', () => { mesasConfig(1) });
-    document.getElementById("mesasConMenos").addEventListener('click', () => { mesasConfig(-1) });
-    var mesas = JSON.parse(bajar("mesa"))
-    var mesasNum = mesas.length - 1
-    document.querySelector("h6.mesasCon").innerHTML = mesasNum;
 }
 
 //Hacer que los 'Details se cierren al abrie otro'
@@ -217,30 +212,5 @@ function añadirArticulo(tipo, nombre, precio) {
 }
 
 
-// Añade o elimina mesas
-function mesasConfig(operacion) {
-    var mesas = JSON.parse(bajar("mesa"))
-    var val = true;
-    var mesasNum = mesas.length - 1;
-    for (let i = 0; i < (mesasNum); i++) {
-        if (mesas[i].estado == "abierta") val = false;
-    }
-    if (!val) {
-        alerta("Esta opción no está disponible si tienes mesas abiertas");
-        setTimeout(() => { location.reload() }, 5000);
-    } else {
-        mesasNum += (operacion);
-        if (mesasNum < 4) {
-            alerta("No puedes eliminar más mesas, ya tienes el mínimo de 4");
-            setTimeout(() => { location.reload() }, 5000);
-        } else {
-            if (mesasNum > 25) {
-                alerta("No puedes añadir más mesas, ya tienes el máximo de 25");
-                setTimeout(() => { location.reload() }, 5000);
-            } else {generaMesas(mesasNum)
-                document.querySelector("h6.mesasCon").innerHTML = mesasNum;}
-        }
-    }
-}
 
 

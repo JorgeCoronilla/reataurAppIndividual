@@ -102,7 +102,7 @@ function checkOut() {
     var numMesa = (parseInt(bajar("mesaActual")));
     var comandaOK=mesa[numMesa].comanda.reduce(function (a, b) { return a + b });
     if (comandaOK>0) {
-       if(numMesa < mesa.length) { checkoutNormal(mesa);
+       if(numMesa < 10) { checkoutNormal(mesa);
     } else {
         checkoutTicket(mesa)
     }} else { 
@@ -156,7 +156,6 @@ function checkoutTicket(mesa) {
     let oldTickets = JSON.parse(localStorage.Tickets);
     oldTickets[reference.id].comanda = mesa[10].comanda;
     oldTickets[reference.id].total = mesa[10].total;
-    // var numMesa = parseInt(bajar("mesaActual"));
     var fecha = new Date;
     var fechaticket = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes()
     oldTickets[reference.id].ultimaMod = fechaticket;
