@@ -1,10 +1,13 @@
-
 /* -------------------------GENERAL-------------------- */
 
 * {
     box-sizing: border-box;
     margin: 0;
 }
+
+::-webkit-scrollbar {
+    width: 0;
+  }
 
 body {
     height: 100%;
@@ -15,6 +18,12 @@ body {
     background-color: white;
     font-family: 'Josefin Slab', serif;
     letter-spacing: 2px;
+
+}
+
+.mainContainer1 {
+    display: flex;
+    flex-direction: row;
 }
 
 header {
@@ -89,6 +98,43 @@ span#header {
     width: 100%;
 }
 
+#initialInfo {
+    position: absolute;
+    top: 100px;
+    left: 2%;
+    padding-top: 30px;
+    width: 96%;
+    background-color: white;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.34);
+    border-radius: 4px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    height: 70%;
+    overflow-y: scroll;
+}
+
+#initialInfo h4 {
+    font-family: 'Nunito Sans', sans-serif;
+
+}
+
+#initialInfo p {
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: left;
+}
+
+#initialInfo span {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #7eaaaa;
+}
+
+.appInfo {}
+
+.mainBody {}
+
 /* -------------------------INDEX-------------------- */
 
 button {
@@ -111,7 +157,7 @@ input {
     border-bottom: solid 1px rgb(125, 125, 125);
     font-size: 22px;
     height: 25px;
-    background-color:rgb(248, 248, 248);
+    background-color: rgb(248, 248, 248);
     width: 20%;
     text-align: center;
 }
@@ -126,14 +172,22 @@ input:focus {
 
 }
 
+#i_login {}
+
 #i_login input {
 
     border-bottom: solid 1px rgb(125, 125, 125);
     font-size: 22px;
     height: 35px;
     width: 65%;
-    margin-bottom: 15px;;
-    background-color:rgb(248, 248, 248);
+    margin-top: 15px;
+    ;
+    background-color: rgba(248, 248, 248, 0.89);
+}
+
+.title-input {
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 #i_login input:focus {
@@ -168,6 +222,32 @@ span#title {
     max-height: 300px;
     border-radius: 1px;
     border-radius: 8px;
+    border: 1px solid rgb(236, 236, 236);
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+}
+
+@media only screen and (min-width: 600px) {
+    #i_login {
+        width: 300px;
+    }
+
+
+    button {
+
+        width: 150px;
+
+    }
+
+    input {
+        width: 150px;
+    }
+
+    #initialInfo{
+      
+        left: 15%;
+        width: 70%;
+    } 
 }
 
 /*-----CAMARERO-------*/
@@ -240,6 +320,7 @@ span#title {
     font-weight: 800;
     border-radius: 5px;
 }
+
 
 /* ------------------------------- ADMIN AREA --------------------------------------- */
 
@@ -380,27 +461,28 @@ details summary::marker {
 
 
 .mesasAtendidas {
- border: 3px solid #fce279;
- width: fit-content;
- margin: 0 auto 10px auto;
- border-radius: 40px;
- color:#aa8800;
- background-color: #fef9e1;
- padding: 5px 5px 0 5px;
+    border: 3px solid #fce279;
+    width: fit-content;
+    margin: 0 auto 10px auto;
+    border-radius: 40px;
+    color: #aa8800;
+    background-color: #fef9e1;
+    padding: 5px 5px 0 5px;
 }
-.camareroAt{
-margin: 0;
-color:#775f00;
+
+.camareroAt {
+    margin: 0;
+    color: #775f00;
 }
 
 
-#mesas_configuracion{
+#mesas_configuracion {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.mesasCon{
+.mesasCon {
     margin: 15px;
     background-color: #ffe88e;
     color: #aa8800;
@@ -408,7 +490,7 @@ color:#775f00;
 }
 
 h6.mesasCon {
-    padding:20px;
+    padding: 20px;
 }
 
 /* ----MESA----*/
@@ -554,7 +636,36 @@ h6.mesasCon {
     padding: 0;
 }
 
+@media only screen and (min-width: 600px) {
 
+    .c_cpntainer1,
+    .c_cpntainer2,
+    .c_cpntainer3 {
+        margin: 0 auto 5px auto;
+        width: 400px;
+    }
+
+    .historial {
+        width: 400px;
+        margin: 0 auto 30px auto;
+    }
+
+    .mesasContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cont1{
+        display: block;
+    }
+    .comandasContainer{
+        min-width: 500px;
+        max-width: 700px;
+        margin: 3px auto;
+    }
+  
+}
 /* ------------------------Ticket--------------------------*/
 #ticketImp {
     display: flex;
@@ -599,9 +710,14 @@ h6.mesasCon {
     border-radius: 5px;
 }
 
+@media only screen and (min-width: 600px) {
+.ticketContiner{width:400px;
+margin: 90px auto 30px;}
+
+}
 /*--------------------------- Pago --------------------------*/
 
-#p_total{
+#p_total {
     border: 3px solid #fce279;
     width: fit-content;
     margin: 20px auto 45px auto;
@@ -632,14 +748,14 @@ input.pagoBody {
     justify-content: center;
     border-bottom: solid rgb(213, 213, 213);
     border-left: solid rgb(213, 213, 213);
-    border-right:  solid rgb(213, 213, 213);
+    border-right: solid rgb(213, 213, 213);
     margin: 0 5% 0 5%;
 }
 
 #mitadArr {
     border-top: solid rgb(213, 213, 213);
     border-left: solid rgb(213, 213, 213);
-    border-right:  solid rgb(213, 213, 213);
+    border-right: solid rgb(213, 213, 213);
     margin: 0 5% 0 5%;
 }
 
@@ -654,29 +770,30 @@ img {
     width: 55px;
     border-bottom: 1px solid rgb(145, 145, 145);
     margin-bottom: 30px;
-    margin-left:20px;
+    margin-left: 20px;
 }
-#pagoFooter button{
-width: 45%;
+
+#pagoFooter button {
+    width: 45%;
 }
 
 #pagoFooter {
-padding: 0
+    padding: 0
 }
 
-#pagoFooter #cerrar{
- background-color: #629461;
+#pagoFooter #cerrar {
+    background-color: #629461;
 }
 
 /* ------------------ALERTS-----------------------*/
 
 #alerta {
-  padding: 20px;
-  background-color: rgb(255, 185, 56);
-  width:90%;
-  position:absolute;
-  left:5%;
-  top:380px;
-  z-index: 5;
-  height: fit-content;
+    padding: 20px;
+    background-color: rgb(255, 185, 56);
+    width: 90%;
+    position: absolute;
+    left: 5%;
+    top: 380px;
+    z-index: 5;
+    height: fit-content;
 }

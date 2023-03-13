@@ -14,6 +14,7 @@
         <title>RestaurApp</title>
 </head>
 <body>
+
     <header>
         <h1>Restaur<span id="header">App</span></h1>
     </header>
@@ -26,18 +27,37 @@
             <p>Bienvenido a:</p>
             <h3>Cafeteria</h3>
             <h2>The <span id="title">Bridge</span></h2>
-            <br>
             <p>Introduce el localizador del ticket:</p>
             <input type="number" id="ticket" min="0" max="99999"><br>
             <button id="ticketID">Consultar</button>
         </div>
         <div id="i_login">
-            <p>¿Trabajas aqui?</p>
-            <input type="text" id="user" maxlength="12"><br>
-            <input type="password" id="password" maxlength="12"><br>
+            <p class="title-input">¿Trabajas aqui?</p>
+            <input type="text" id="user" maxlength="12" value="camarero1"><br>
+            <input type="password" id="password" maxlength="12" value="1234"><br>
         </div>
     </div>
     <div class="spacer"></div>
+    <div id="initialInfo">
+        <h4>RestaurApp</h4>
+        <p>Aplicación realizada solo con Javascript nativo, Html y CSS.</p>
+        <p>La aplicación permite tomar comandas a cada empleado abrir y cerrar mesas, tomar pedidos, emitir un ticket.</p>
+        <p>Por otro lado el admin puede cambiar usuarios, modificar, eliminar o añadir elementos del menú y revisar datos de ventas realizadas.</p>
+        <p>Para usar la app puede:</p>
+        <p>Loguearse como camarero. <span>(camarero1: 1234, camarero2: 1234, camarero3: 1234, camarero4: 1234)</span></p>
+            <p>Loguearse como admin. <span>(admin: nimda)</span></p>
+            <p>Acceder a su ticket.</p>
+    <hr />
+    <p>This app has been made with only with vanilla Javascript, Html and CSS.</p>
+    <p>With this app waiters can open or close a table, take orders and create a bill.</p>
+    <p>Admin can check activity of waiters and tables. Also can delete, modify or create items in the menu.</p>
+    <p>Customers can access to their ticket and make a payment</p>
+    <p>In order to access:</p>
+    <p>Login as a waiter. <span>(camarero1: 1234, camarero2: 1234, camarero3: 1234, camarero4: 1234)</span></p>
+        <p>Login as admin. <span>(admin: nimda)</span></p>
+        <p>Check your ticket.</p>
+        <button id="closeInfo">Aceptar</button>
+    </div>
     <footer>
         <button id = "login">Iniciar sesión</button>
     </footer>

@@ -10,9 +10,19 @@ document.getElementById("ticketID").addEventListener("click", () => {
     consulta_ticket()
 })
 
+document.getElementById("initialInfo").addEventListener("click", () => {
+    closeInfo();
+})
+
 document.getElementById("login").addEventListener("click", () => {
     iniciarSesion();
 })
+
+//Funcion para cerrar mensaje inicial
+
+function closeInfo(){
+    document.getElementById("initialInfo").style.display = "none";
+}
 
 //Funcion logIn de camareros y admin
 function iniciarSesion() {
